@@ -1,0 +1,12 @@
+[Added Associations]
+image/png=feh.desktop;firefox.desktop;viewnior.desktop;
+application/x-shellscript=nvim.desktop;
+text/plain=nvim.desktop;
+
+[Default Applications]
+text/plain=nvim.desktop
+application/x-pem-file=vim.desktop
+application/x-shellscript=vim.desktop
+application/x-spkac+base64=vim.desktop
+application/xml=vim.desktop
+image/png=viewnior.desktop

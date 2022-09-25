@@ -1,0 +1,102 @@
+#!/bin/sh
+
+# CMDs
+uptime="`uptime -p | sed -e 's/up //g'`"
+
+# rofi theme
+theme="$HOME/.config/rofi/themes/power_menu.rasi"
+confirm_theme="$HOME/.config/rofi/themes/confirm.rasi"
+
+# Get user confirmation 
+get_confirmation() {
+	rofi -dmenu -i \
+		 -no-fixed-num-lines \
+		 -p "Are You Sure? : " \
+		 -theme "$confirm_theme"
+}
+
+
+get_options() {
+  echo "  Poweroff"
+  echo "  Reboot"
+#  echo "  Hibernate"
+  echo "  Lock"
+  echo "  Suspend"
+  echo "  Log out"
+}
+
+main() {
+
+  # get choice from rofi
+  choice=$( (get_options) | rofi -show -dmenu -p "" -theme "$theme")
+
+  # run the selected command
+  case $choice in
+  '  Poweroff')
+	ans=$(get_confirmation)
+	if [[ $ans == "yes" ]] || [[ $ans == "YES" ]] || [[ $ans == "y" ]]; then
+	    systemctl poweroff
+	elif [[ $ans == "no" ]] || [[ $ans == "NO" ]] || [[ $ans == "n" ]]; then
+	    exit
+        else
+	    exit
+        fi
+    # systemctl poweroff
+    ;;
+  '  Reboot')
+ 	ans=$(get_confirmation)
+ 	if [[ $ans == "yes" ]] || [[ $ans == "YES" ]] || [[ $ans == "y" ]]; then
+ 	    systemctl reboot
+ 	elif [[ $ans == "no" ]] || [[ $ans == "NO" ]] || [[ $ans == "n" ]]; then
+ 	    exit
+ 	else
+ 	    exit
+ 	fi
+    # systemctl reboot
+    ;;
+#  ' Hibernate')
+#     systemctl hibernate
+#    ;;
+  '  Lock')
+#        ans=$(get_confirmation)
+#        if [[ $ans == "yes" ]] || [[ $ans == "YES" ]] || [[ $ans == "y" ]]; then
+#            betterlockscreen --lock
+#        elif [[ $ans == "no" ]] || [[ $ans == "NO" ]] || [[ $ans == "n" ]]; then
+#            exit
+#        else
+#            exit
+#	fi
+    betterlockscreen --lock
+    ;;
+  '  Suspend')
+    	ans=$(get_confirmation)
+	if [[ $ans == "yes" ]] || [[ $ans == "YES" ]] || [[ $ans == "y" ]]; then
+	mpc -q pause
+	amixer set Master mute
+	betterlockscreen --suspend
+	elif [[ $ans == "no" ]] || [[ $ans == "NO" ]] || [[ $ans == "n" ]]; then
+	    exit
+        else
+	    exit
+        fi
+    ;;
+  '  Log out')
+	ans=$(get_confirmation)
+	if [[ $ans == "yes" ]] || [[ $ans == "YES" ]] || [[ $ans == "y" ]]; then
+	    bspc quit
+	elif [[ $ans == "no" ]] || [[ $ans == "NO" ]] || [[ $ans == "n" ]]; then
+	    exit
+        else
+	    exit
+        fi
+    ;;
+  esac
+
+  # done
+  set -e
+}
+
+main &
+
+exit 0
+

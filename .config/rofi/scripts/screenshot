@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# rofi theme
+theme="$HOME/.config/rofi/themes/screenshot.rasi"
+IMG_PATH=/home/roshan/Pictures/screenshot/
+notify_time=2000
+output='/home/roshan/Pictures/screenshot/%Y-%m-%d-%T-screenshot.png'
+
+
+# options to be displayed
+option0="  Screen"
+option1="  Area"
+option2="  Window"
+option3="  Screen delay 5s"
+option4="  Window delay 5s"
+
+# options to be displyed
+options="$option0\n$option1\n$option2\n$option3\n$option4"
+
+selected="$(echo -e "$options" | rofi -dmenu -i -selected-row 0 -theme "$theme")"
+cd $IMG_PATH
+case $selected in
+    $option0)
+        scrot "$output" && notify-send -u low -t 2000 'Screenshot saved';;
+    $option1)
+        scrot -s "$output" && notify-send -u low -t 2000 'Screenshot saved';;
+    $option2)
+        scrot -u "$output" && notify-send -u low -t 2000 'Screenshot saved';;
+    $option3)
+        scrot -d "$output" && notify-send -u low -t 2000 'Screenshot saved';;
+    $option4)
+        scrot -u -d 5 && notify-send -u low -t 2000 'Screenshot saved';;
+esac
+

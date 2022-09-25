@@ -1,0 +1,25 @@
+@import "fonts.rasi"
+@import "colors.rasi"
+
+* {
+    background-color:       @bg;
+    text-color:             @fg;
+}
+
+window {
+    width:      	    230px;
+    padding:    	    20px;
+    border:		    1px;
+    border-radius:          0px;
+    border-color:           @ac;
+    location:               center;
+    x-offset:               0;
+    y-offset:               -4%;
+}
+
+entry {
+    expand: 		    true;
+    width: 		    150px;
+    text-color:		    @fg;
+}
+

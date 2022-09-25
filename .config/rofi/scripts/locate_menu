@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# rofi theme
+theme="$HOME/.config/rofi/themes/locate_menu.rasi"
+
+xdg-open "$(locate -e -i home media | rofi -threads 0 -dmenu -i -p "  " -theme "$HOME/.config/rofi/themes/locate_menu.rasi")"
+

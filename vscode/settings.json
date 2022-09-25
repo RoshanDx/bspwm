@@ -1,0 +1,11 @@
+{
+    "workbench.colorTheme": "Tokyo Night Storm",
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "terminal.integrated.fontFamily": "Iosevka",
+    "terminal.integrated.environmentChangesRelaunch": false,
+    "terminal.integrated.fontWeight": "normal",
+    "terminal.integrated.gpuAcceleration": "canvas",
+    "terminal.integrated.fontSize": 16,
+    "terminal.integrated.persistentSessionReviveProcess": "never",
+    "terminal.integrated.enablePersistentSessions": false
+}
