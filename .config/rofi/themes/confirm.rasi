@@ -20,6 +20,6 @@ window {
 entry {
     expand: 		    true;
     width: 		    150px;
-    text-color:		    @fg;
+    text-color:		    @sc;
 }
 
