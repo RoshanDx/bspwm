@@ -1,9 +1,13 @@
 #! /bin/sh
 
+export _JAVA_AWT_WM_NONREPARENTING=1
+
 xrandr --auto &
-xrandr --output Virtual1 --mode 1920x1080 &
+xrandr --output Virtual1 --mode 3840x2160 &
 
 bspc monitor -d 1 2 3 4 5 6 7 8 
+
+bspc rule -a wfica state=floating manage=off center=true
 
 ## Apply bspwm configurations
 bspc config border_width 3
@@ -29,8 +33,14 @@ bspc wm --adopt-orphans
 # remove all rules first
 bspc rule -r *:*
 
+#Intellij
+bspc rule -a jetbrains-idea-ce follow=on focus=on
+
 #Thunar
 bspc rule --add Thunar state=floating center=true
+
+#Alacritty
+#bspc rule --add Alacritty state=floating center=true rectangle=1300x800+0+0
 
 ## Always Floating Apps
 declare -a floating=(alacritty-float Pcmanfm Thunar Onboard Yad 'Firefox:Places' \
@@ -47,6 +57,11 @@ killall -9 sxhkd
 
 sh $HOME/.config/polybar/polybar &
 sxhkd -c ~/.config/sxhkd/sxhkdrc &
+
+# Enable Super Keys For Menu
+ksuperkey -e 'Super_L=Super_L|F1' &
+ksuperkey -e 'Super_R=Super_L|F1' &
+
 nitrogen --restore &
 lxsession &
 xsetroot -cursor_name left_ptr &

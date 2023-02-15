@@ -9,6 +9,7 @@ configuration {
     font: 			    "JetBrainsMono Nerd Font 14";
 }
 
+@import "fonts.rasi"
 @import "colors.rasi"
 
 window {
@@ -18,7 +19,7 @@ window {
     border:			    4px;
     border-color:	            @ac;
     border-radius:                  0;
-    width:			    15%;
+    width:			    8%;
     location:                       center;
     x-offset:                       0;
     y-offset:                       0;
@@ -94,7 +95,7 @@ element-text {
     background-color:               @bg;
     text-color:                     @fg;
     expand:                         true;
-    margin:                         0.0% 0% 0% -1.7%;
+    margin:                         0 0 0 -20px;
 }
 
 element selected {

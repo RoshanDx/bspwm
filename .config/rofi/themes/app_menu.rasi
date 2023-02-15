@@ -1,9 +1,9 @@
 configuration {
     show-icons:                     true;
     icon-theme: 		    "Papirus";
-    display-drun: 		    " ";
+    display-drun: 		    " ";
     display-window: 		    " 﩯";
-    display-run: 		    " ";
+    display-run: 		    " ";
     drun-display-format:            "{name}";
     disable-history:                false;
     fullscreen:                     false;
@@ -21,7 +21,7 @@ window {
     border:			    4px;
     border-color:		    @ac;
     border-radius:                  0;
-    width:			    30%;
+    width:			    14%;
     location:                       center;
     x-offset:                       0;
     y-offset:                       0;
@@ -29,9 +29,9 @@ window {
 
 prompt {
     enabled: 			   true;
-    padding: 			   0.1% 1% 0% -0.5%;
+    padding: 			   0 0 0 -35px;
     background-color: 		   @al;
-    text-color: 		   @fg;
+    text-color: 		   @cy;
 }
 
 entry {
@@ -41,7 +41,7 @@ entry {
     expand:                         true;
     horizontal-align:               0;
     placeholder:                    "Search";
-    padding:                        0.10% 0% 0% 0%;
+    padding:                        0 0 0 25px;
     blink:                          true;
 }
 

@@ -7,6 +7,8 @@
   fg:  #F8F8F2;
   ac:  #282A36;
   sc:  #9ECE6A;
-  br:  #7BC5E4; 
+  yl:  #FFCB6B;
+  br:  #7BC5E4;
+  cy:  #89DDFF;
 }
 

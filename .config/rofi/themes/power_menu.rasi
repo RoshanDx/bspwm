@@ -18,7 +18,7 @@ window {
     border:			    4px;
     border-color:	            @ac;
     border-radius:                  0;
-    width:			    20%;
+    width:			    7%;
     location:                       center;
     x-offset:                       0;
     y-offset:                       0;
@@ -94,7 +94,7 @@ element-text {
     background-color:               @bg;
     text-color:                     @fg;
     expand:                         true;
-    margin:                         0.0% 0% 0% -1.7%;
+    margin:                         0 0 0 -20px;
 }
 
 element selected {
