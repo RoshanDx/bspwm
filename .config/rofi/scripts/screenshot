@@ -4,7 +4,7 @@
 theme="$HOME/.config/rofi/themes/screenshot.rasi"
 IMG_PATH=/home/roshan/Pictures/screenshot/
 notify_time=2000
-output='/home/roshan/Pictures/screenshot/%Y-%m-%d-%T-screenshot.png'
+output='/home/walter/Pictures/screenshots/%Y-%m-%d-%T-screenshot.png'
 
 
 # options to be displayed

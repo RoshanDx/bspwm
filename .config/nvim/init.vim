@@ -1,2 +1,3 @@
-set number
+set relativenumber
 hi LineNr ctermfg=10
+

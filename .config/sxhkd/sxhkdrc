@@ -2,15 +2,19 @@
 # wm independent hotkeys
 #
 
-# terminal emulator
+# Terminal tile mode
 super + Return
 	alacritty
 
-# program launcher
-super + a
+# Terminal floating mode
+super + {_,shift +}Return
+	{alacritty, bspc rule -a \* -o state=floating rectangle=1300x800+0+0 center=true && alacritty}
+
+# App launcher
+super + F1
 	sh ~/.config/rofi/scripts/{app_menu}
 
-# make sxhkd reload its configuration files:
+# Reload sxhkd
 super + Escape
 	pkill -USR1 -x sxhkd
 
@@ -18,15 +22,15 @@ super + Escape
 # bspwm hotkeys
 #
 
-# quit/restart bspwm
+# Quit/Restart bspwm
 super + alt + {q,r}
 	bspc {quit,wm -r}
 
-# close and kill
+# Close and kill
 super + {_,shift + }q
 	bspc node -{c,k}
 
-# alternate between the tiled and monocle layout
+# Alternate between the tiled and monocle layout
 super + m
 	bspc desktop -l next
 
@@ -34,11 +38,11 @@ super + m
 super + space
     bspc node -t "~"{floating,tiled}
 
-# send the newest marked node to the newest preselected node
+# Send the newest marked node to the newest preselected node
 super + y
 	bspc node newest.marked.local -n newest.!automatic.local
 
-# swap the current node and the biggest window
+# Swap the current node and the biggest window
 super + g
 	bspc node -s biggest.window
 
@@ -46,85 +50,85 @@ super + g
 # state/flags
 #
 
-# set the window state
+# Set the window state
 super + {t,shift + t,s,f}
 	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
-# set the node flags
+# Set the node flags
 super + ctrl + {m,x,y,z}
 	bspc node -g {marked,locked,sticky,private}
 
 #
-# focus/swap
+# Focus/Swap
 #
 
-# focus the node in the given direction
+# Focus the node in the given direction
 super + {_,shift + }{h,j,k,l}
 	bspc node -{f,s} {west,south,north,east}
 
-# focus the node for the given path jump
+# Focus the node for the given path jump
 super + {p,b,comma,period}
 	bspc node -f @{parent,brother,first,second}
 
-# focus the next/previous window in the current desktop
-super + {_,shift + }c
+# Focus the next/previous window in the current desktop
+super + {_,shift + }Tab
 	bspc node -f {next,prev}.local.!hidden.window
 
-# focus the next/previous desktop in the current monitor
+# Focus the next/previous desktop in the current monitor
 super + bracket{left,right}
 	bspc desktop -f {prev,next}.local
 
-# focus the last node/desktop
-super + {grave,Tab}
+# Focus the last node/desktop
+super + {grave,c}
 	bspc {node,desktop} -f last
 
-# focus the older or newer node in the focus history
+# Focus the older or newer node in the focus history
 super + {o,i}
 	bspc wm -h off; \
 	bspc node {older,newer} -f; \
 	bspc wm -h on
 
-# focus or send to the given desktop
+# Focus or send to the given desktop
 super + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} '^{1-9,10}'
 
 #
-# preselect
+# Preselect
 #
 
-# preselect the direction
+# Preselect the direction
 super + ctrl + {h,j,k,l}
 	bspc node -p {west,south,north,east}
 
-# preselect the ratio
+# Preselect the ratio
 super + ctrl + {1-9}
 	bspc node -o 0.{1-9}
 
-# cancel the preselection for the focused node
+# Cancel the preselection for the focused node
 super + ctrl + space
 	bspc node -p cancel
 
-# cancel the preselection for the focused desktop
+# Cancel the preselection for the focused desktop
 super + ctrl + shift + space
 	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
 
 #
-# move/resize
+# Move/Resize
 #
 
-# expand a window by moving one of its side outward
+# Expand a window by moving one of its side outward
 super + alt + {h,j,k,l}
 	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
 
-# contract a window by moving one of its side inward
+# Contract a window by moving one of its side inward
 super + alt + shift + {h,j,k,l}
 	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
 
-# move a floating window
+# Move a floating window
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
-# open file manager
+# Open file manager
 super + e
 	thunar
 
@@ -137,9 +141,21 @@ super + {w,x,n}
 	sh ~/.config/rofi/scripts/{window_menu,power_menu,networkmanager_dmenu}
 
 # Rofi Locate
-super + shift + n
-	sh ~/.config/rofi/scripts/{locate_menu}
+#super + shift + n
+#	sh ~/.config/rofi/scripts/{locate_menu}
+
+# Rofi CheatSheet
+super + F2
+	sh ~/.config/rofi/scripts/{cheatsheet}
 
 # Screenshot
 Print
-        sh ~/.config/rofi/scripts/{screenshot}	
+    sh ~/.config/rofi/scripts/{screenshot}	
+
+# Toggle picom
+super + alt + o
+	sh ~/.config/picom/{picom-toggle}
+
+# Ranger
+super + r
+	alacritty -e ranger

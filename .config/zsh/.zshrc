@@ -25,13 +25,16 @@ bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 
 #Alias
+alias fuck="sudo"
 alias ls="ls --color=auto"
 alias wifimenu="sh ~/.config/rofi/scripts/wifi_menu"
 alias locate="sh ~/.config/rofi/scripts/locate_menu"
+alias aqua="asciiquarium"
 
 #Plugins
 source ~/.config/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.config/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.config/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 source ~/.config/zsh/plugins/you-should-use/you-should-use.plugin.zsh
-
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme

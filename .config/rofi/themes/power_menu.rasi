@@ -18,7 +18,7 @@ window {
     border:			    4px;
     border-color:	            @ac;
     border-radius:                  0;
-    width:			    7%;
+    width:			    calc(50% min 256);
     location:                       center;
     x-offset:                       0;
     y-offset:                       0;

@@ -1,7 +1,7 @@
 configuration {
     show-icons:                     true;
     icon-theme: 		    "Papirus";
-    display-drun: 		    " ";
+    display-drun: 		    "";
     display-window: 		    " 﩯";
     display-run: 		    " ";
     drun-display-format:            "{name}";
@@ -21,7 +21,7 @@ window {
     border:			    4px;
     border-color:		    @ac;
     border-radius:                  0;
-    width:			    14%;
+    width:			    calc(30% min 512); 
     location:                       center;
     x-offset:                       0;
     y-offset:                       0;
@@ -29,7 +29,6 @@ window {
 
 prompt {
     enabled: 			   true;
-    padding: 			   0 0 0 -35px;
     background-color: 		   @al;
     text-color: 		   @cy;
 }
@@ -52,9 +51,10 @@ inputbar {
     expand:                         false;
     border:			    0% 0% 0% 0%;
     border-radius:                  0px;
-	border-color:		    @ac;
+    border-color:		    @ac;
     margin:                         0% 0% 0% 0%;
-    padding:                        1.5%;
+    padding:                        30px;
+    
 }
 
 listview {

@@ -19,7 +19,7 @@ window {
     border:			    4px;
     border-color:	            @ac;
     border-radius:                  0;
-    width:			    8%;
+    width:			    calc(100% min 256);
     location:                       center;
     x-offset:                       0;
     y-offset:                       0;
