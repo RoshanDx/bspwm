@@ -9,7 +9,7 @@ monitor
 
 ## Apply bspwm configurations
 bspc config border_width 3
-bspc config window_gap 6.5
+bspc config window_gap 20
 bspc config split_ratio 0.50
 
 bspc config focused_border_color "#7BC5E4" 
@@ -77,3 +77,4 @@ xsetroot -cursor_name left_ptr &
 sh $HOME/.config/dunst/dunst
 pgrep bspswallow || bspswallow &
 
+killall picom
