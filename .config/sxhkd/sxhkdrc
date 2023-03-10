@@ -1,6 +1,3 @@
-#
-# wm independent hotkeys
-#
 
 # Terminal tile mode
 super + Return
@@ -8,7 +5,7 @@ super + Return
 
 # Terminal floating mode
 super + {_,shift +}Return
-	{alacritty, bspc rule -a \* -o state=floating rectangle=1300x800+0+0 center=true && alacritty}
+	tdrop -ma -w 40% -y 30% -x 30% alacritty
 
 # App launcher
 super + F1
@@ -16,11 +13,7 @@ super + F1
 
 # Reload sxhkd
 super + Escape
-	pkill -USR1 -x sxhkd
-
-#
-# bspwm hotkeys
-#
+	pkill -usr1 -x sxhkd; notify-send 'SXHKD' 'Config Reloaded!'
 
 # Quit/Restart bspwm
 super + alt + {q,r}
@@ -33,7 +26,15 @@ super + {_,shift + }q
 # Alternate between the tiled and monocle layout
 super + m
 	bspc desktop -l next
-
+	
+# Move current window to a pre-selected space
+super + shift + m
+    bspc node -n last.!automatic
+    
+# Rotate tree
+super + shift + {d,a}
+    bspc node @/ -C {forward,backward}
+    
 # Toggle beetwen floating & tiled
 super + space
     bspc node -t "~"{floating,tiled}
@@ -44,11 +45,7 @@ super + y
 
 # Swap the current node and the biggest window
 super + g
-	bspc node -s biggest.window
-
-#
-# state/flags
-#
+	bspc node -s biggest.local
 
 # Set the window state
 super + {t,shift + t,s,f}
@@ -57,10 +54,6 @@ super + {t,shift + t,s,f}
 # Set the node flags
 super + ctrl + {m,x,y,z}
 	bspc node -g {marked,locked,sticky,private}
-
-#
-# Focus/Swap
-#
 
 # Focus the node in the given direction
 super + {_,shift + }{h,j,k,l}
@@ -92,10 +85,6 @@ super + {o,i}
 super + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} '^{1-9,10}'
 
-#
-# Preselect
-#
-
 # Preselect the direction
 super + ctrl + {h,j,k,l}
 	bspc node -p {west,south,north,east}
@@ -111,10 +100,6 @@ super + ctrl + space
 # Cancel the preselection for the focused desktop
 super + ctrl + shift + space
 	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
-
-#
-# Move/Resize
-#
 
 # Expand a window by moving one of its side outward
 super + alt + {h,j,k,l}
@@ -140,12 +125,8 @@ ctrl + alt + l
 super + {w,x,n}
 	sh ~/.config/rofi/scripts/{window_menu,power_menu,networkmanager_dmenu}
 
-# Rofi Locate
-#super + shift + n
-#	sh ~/.config/rofi/scripts/{locate_menu}
-
 # Rofi CheatSheet
-super + F2
+super + slash
 	sh ~/.config/rofi/scripts/{cheatsheet}
 
 # Screenshot
@@ -159,3 +140,27 @@ super + alt + o
 # Ranger
 super + r
 	alacritty -e ranger
+	
+# Volume Up
+XF86AudioRaiseVolume
+	changevolume up
+
+# Volume Down
+XF86AudioLowerVolume
+	changevolume down
+
+# Volume Mute
+XF86AudioMute
+	changevolume mute
+	
+# Brightness Up
+XF86MonBrightnessUp
+	changebrightness up
+
+# Brightness Down
+XF86MonBrightnessDown
+	changebrightness down
+	
+# Pavucontrol
+super + {_,shift +}p
+	tdrop -ma -w 40% -y 30% -x 30% -n Pavucontrol --class=Pavucontrol pavucontrol

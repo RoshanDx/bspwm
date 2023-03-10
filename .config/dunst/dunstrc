@@ -6,7 +6,7 @@
 #                              
 
 [global]
-font = Roboto Medium 12
+font = JetBrainsMono Nerd Font Mono Regular 12
 icon_theme = "Papirus-Dark"
 enable_recursive_icon_lookup = true
 
@@ -159,6 +159,8 @@ class = Dunst
 icon_position = left
 max_icon_size = 48
 
+#icon_path = /home/walter/.local/share/icons/dunst
+
 frame_width = 0
 
 # [shortcuts]
@@ -194,7 +196,8 @@ timeout = 10
 frame_color = "#80a8fd"
 foreground = "#f8f8f2"
 background = "#282e49"
-timeout = 2
+timeout = 3
+new_icon = bell
 
 [urgency_critical]
 frame_color = "#f7768e"
@@ -204,12 +207,17 @@ timeout = 10
 
 [notify_send]
 appname = notify-send
-new_icon = bell
+#new_icon = bell
 
 [wireless]
 appname = wireless
 new_icon = network-card
 format = "<span font_desc='JetBrainsMono Medium Nerd Font'>%b</span>"
+
+[play_sound]
+summary = "*"
+script = /home/walter/.local/bin/alert
+
 
 # Every section that isn't one of the above is interpreted as a rules to
 # override settings for certain messages.
@@ -262,5 +270,4 @@ format = "<span font_desc='JetBrainsMono Medium Nerd Font'>%b</span>"
 #    appname = Pidgin
 #    summary = *twitter.com*
 #    urgency = normal
-#
 # vim: ft=cfg

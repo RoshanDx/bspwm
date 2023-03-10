@@ -2,10 +2,9 @@
 
 # rofi theme
 theme="$HOME/.config/rofi/themes/screenshot.rasi"
-IMG_PATH=/home/roshan/Pictures/screenshot/
-notify_time=2000
-output='/home/walter/Pictures/screenshots/%Y-%m-%d-%T-screenshot.png'
-
+IMG_PATH=/home/walter/Pictures/screenshot/
+notify="notify-send -u low -t 2000 'Screenshot saved' -u normal"
+output='/home/'$USER'/Pictures/screenshots/'$(date +%Y-%m-%d-%T)'-screenshot.png'
 
 # options to be displayed
 option0="  Screen"
@@ -14,21 +13,58 @@ option2="  Window"
 option3="  Screen delay 5s"
 option4="  Window delay 5s"
 
+#option to save to
+suboption0="  Clipboard"
+suboption1="  File"
+
 # options to be displyed
 options="$option0\n$option1\n$option2\n$option3\n$option4"
+suboptions="$suboption0\n$suboption1"
 
 selected="$(echo -e "$options" | rofi -dmenu -i -selected-row 0 -theme "$theme")"
-cd $IMG_PATH
+subselected="$(echo -e "$suboptions" | rofi -dmenu -i -selected-row 0 -theme "$theme" -no-fixed-num-lines)"
+
+#cd "$IMAGE_PATH"
 case $selected in
     $option0)
-        scrot "$output" && notify-send -u low -t 2000 'Screenshot saved';;
+		case $subselected in
+			$suboption0)
+				maim | xclip -selection clipboard -t image/png && $(eval "$notify");;
+			$suboption1)
+				maim "$output" | xclip -selection clipboard -t image/png && $(eval "$notify");;      
+		esac;;
     $option1)
-        scrot -s "$output" && notify-send -u low -t 2000 'Screenshot saved';;
+		case $subselected in
+			$suboption0)
+				maim -s | xclip -selection clipboard -t image/png && $(eval "$notify");;
+			$suboption1)
+				maim -s "$output" | xclip -selection clipboard -t image/png && $(eval "$notify");;
+		esac;;
     $option2)
-        scrot -u "$output" && notify-send -u low -t 2000 'Screenshot saved';;
+		case $subselected in
+			$suboption0)
+				maim -i $(xdotool getactivewindow) | xclip -selection clipboard -t image/png && $(eval "$notify");;
+			$suboption1)
+				maim -i $(xdotool getactivewindow) "$output" | xclip -selection clipboard -t image/png && $(eval "$notify");;
+		esac;;
     $option3)
-        scrot -d "$output" && notify-send -u low -t 2000 'Screenshot saved';;
+		case $subselected in
+			$suboption0)
+				sleep 5;
+				maim | xclip -selection clipboard -t image/png && $(eval "$notify");;
+			$suboption1)
+				sleep 5;
+				maim "$output" | xclip -selection clipboard -t image/png && $(eval "$notify");;
+		esac;;
     $option4)
-        scrot -u -d 5 && notify-send -u low -t 2000 'Screenshot saved';;
+		case $subselected in
+			$suboption0)
+				sleep 5;
+				maim -i | xclip -selection clipboard -t image/png && $(eval "$notify");;        
+			$suboption1)
+				sleep 5;
+				maim -i $(xdotool getactivewindow) "$output" | xclip -selection clipboard -t image/png && $(eval "$notify");;        
+		esac;;
+	*)		
 esac
 

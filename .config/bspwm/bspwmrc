@@ -1,21 +1,11 @@
 #! /bin/sh
 
+SCRIPT_DIR=~/.local/bin/
+
 export _JAVA_AWT_WM_NONREPARENTING=1
 
-xrandr --auto &
-xrandr --output Virtual1 --mode 3840x2160 &
-#xrandr --output Virtual1 --mode 1920x1080 &
-
-bspc monitor -d 1 2 3 4 5 6 7
-
-workspaces() {
-	name=1
-	for monitor in `bspc query -M`; do
-		bspc monitor ${monitor} -n "$name" -d '一' '二' '三' '四' '五' '六' '七'
-		let name++
-	done
-}
-workspaces
+#Display Setup
+monitor
 
 ## Apply bspwm configurations
 bspc config border_width 3
@@ -41,44 +31,49 @@ bspc wm --adopt-orphans
 # remove all rules first
 bspc rule -r *:*
 
+#Define screensize for floating window for multiple resolution
+windowwidth=800
+windowheight=600
+screenwidth=$(xdpyinfo | awk -F'[ x]+' '/dimensions:/{print $3}')
+screenheight=$(xdpyinfo | awk -F'[ x]+' '/dimensions:/{print $4}')
+windowx=$(("$screenwidth"/2-"$windowwidth"/2))
+windowy=$(("$screenheight"/2-"$windowheight"/2))
+
 #Intellij
 bspc rule -a jetbrains-idea-ce follow=on desktop='^2'
-#Thunar
-bspc rule --add Thunar state=floating center=true
 #Postman
 bspc rule -a Postman desktop='^3'
 #DBeaver
 bspc rule -a DBeaver desktop='^4'
 #Citrix
 bspc rule -a Wfica desktop='^7' state=pseudo_tiled follow=on
-bspc rule -a "Windows sign-i7" desktop='^7' state=floating
+bspc rule -a "Windows sign-in" desktop='^7' state=floating
 bspc rule -a "Wfica_Splash" desktop='^7' state=floating
 bspc rule -a "Citrix Workspace" desktop='^7' state=pseudo_tiled
 bspc rule -a "Remote Desktop Connection" desktop='^7' state=pseudo_tiled
 
 ## Always Floating Apps
-declare -a floating=(alacritty-float Pcmanfm Thunar Onboard Yad 'Firefox:Places' \
-Viewnior feh Nm-connection-editor)
+declare -a floating=(alacritty-float Pcmanfm Thunar Onboard Yad Nitrogen \
+Viewnior feh Nm-connection-editor 'Firefox:Places')
 for i in ${floating[@]}; do
-   bspc rule -a $i state=floating follow=on focus=on; done
+   bspc rule -a $i state=floating follow=on focus=on center=true rectangle="$windowwidth"x"$windowheight"+"$windowx"+"$windowy"; done
 
 # Autostart -----------------------------#
 
 #Kill if already running
 killall -9 sxhkd
-#killall picom
 
 sh $HOME/.config/polybar/polybar &
-sxhkd -c ~/.config/sxhkd/sxhkdrc &
+sxhkd -c $HOME/.config/sxhkd/sxhkdrc &
 
 # Enable Super Keys For Menu
 ksuperkey -e 'Super_L=Super_L|F1' &
 ksuperkey -e 'Super_R=Super_L|F1' &
 
-
-nitrogen --restore &
 lxsession &
 picom --legacy-backends &
+nitrogen --restore &
 xsetroot -cursor_name left_ptr &
 sh $HOME/.config/dunst/dunst
 pgrep bspswallow || bspswallow &
+

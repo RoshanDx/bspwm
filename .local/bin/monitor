@@ -1,0 +1,77 @@
+##! /bin/sh
+
+INTERNAL_MONITOR="eDP"
+EXTERNAL_MONITOR="DisplayPort-0"
+
+monitor_add() {
+  
+  desktops=7 # How Many dekstops to move to external monitor
+  
+  # Move specified desktops to external monitor
+  for desktop in $(bspc query -D --names -m "$INTERNAL_MONITOR" | sed "$desktops"q); do
+    bspc desktop "$desktop" --to-monitor "$EXTERNAL_MONITOR"
+  done
+
+  # Remove default "Desktop" created by bspwm
+  bspc desktop Desktop --remove
+
+  # reorder monitors
+  bspc wm -O "$EXTERNAL_MONITOR" "$INTERNAL_MONITOR"
+}
+
+monitor_remove() {
+	
+  # Add default temp desktop because a minimum of one desktop is required per monitor
+  bspc monitor "$INTERNAL_MONITOR" -a Desktop
+  
+  # Move all desktops except the last default desktop to external monitor
+  for desktop in $(bspc query -D -m "$INTERNAL_MONITOR");
+  do
+    bspc desktop "$desktop" --to-monitor "$EXTERNAL_MONITOR"
+  done
+  
+  ## Now move everything back to internal monitor
+  
+  bspc monitor "$EXTERNAL_MONITOR" -a Desktop
+
+  # Move all desktops except the last default desktop to internal monitor
+  for desktop in $(bspc query -D -m "$EXTERNAL_MONITOR");	
+  do
+    bspc desktop "$desktop" --to-monitor "$INTERNAL_MONITOR"
+  done
+
+  # Delete default desktops
+  bspc desktop Desktop --remove
+
+  # Reorder desktops
+  bspc monitor "$INTERNAL_MONITOR" -o '一' '二' '三' '四' '五' '六' '七' '八' '九' '十'
+} 
+
+if [[ $(xrandr -q | grep "${EXTERNAL_MONITOR} connected") ]]; then
+	
+	## set xrandr rules for mirror setup
+	#xrandr --output "$INTERNAL_MONITOR" --off --output "$EXTERNAL_MONITOR" --primary --mode 3840x2160 -r 120.00  --rotate normal --same-as eDP
+	#bspc monitor "${EXTERNAL_MONITOR}" -d '一' '二' '三' '四' '五' '六' '七'
+	
+	## set xrandr rules for docked setup
+	xrandr --output "$INTERNAL_MONITOR" --mode 1920x1080 --pos 0x0 --rotate normal --output "$EXTERNAL_MONITOR" --primary --mode 2560x1440 -r 120.00 --pos 1920x0 --rotate normal
+	bspc monitor "$INTERNAL_MONITOR" -d '一' '二' '三' '四' '五' '六' '七' '八' '九' '十'
+	
+	if [[ $(bspc query -D -m "${EXTERNAL_MONITOR}" | wc -l) -ne 7 ]]; then
+		monitor_add
+	fi
+	if [[ $(bspc query -D -m "${INTERNAL_MONITOR}" | wc -l) -ne 3 ]]; then
+		bspc monitor "$EXTERNAL_MONITOR" -d '一' '二' '三' '四' '五' '六' '七'
+		bspc monitor "$INTERNAL_MONITOR" -d '八' '九' '十'
+		bspc wm -O "$EXTERNAL_MONITOR" "$INTERNAL_MONITOR"
+	fi
+else
+	## set xrandr rules for mobile setup
+	xrandr --output "$INTERNAL_MONITOR" --primary --mode 1920x1080 --pos 0x0 --rotate normal --output "$EXTERNAL_MONITOR" --off
+	#bspc monitor "$INTERNAL_MONITOR" -d '一' '二' '三' '四' '五' '六' '七' '八' '九' '十'
+	
+	if [[ $(bspc query -D -m "${INTERNAL_MONITOR}" | wc -l) -ne 10 ]]; then
+		monitor_remove
+	fi
+
+fi	

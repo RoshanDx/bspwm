@@ -9,10 +9,11 @@ confirm_theme="$HOME/.config/rofi/themes/confirm.rasi"
 
 # Get user confirmation 
 get_confirmation() {
-	rofi -dmenu -i \
+	rofi -dmenu -i -monitor -1 \
 		 -no-fixed-num-lines \
 		 -p "Are You Sure? : " \
-		 -theme "$confirm_theme"
+		 -theme "$confirm_theme" 
+		 
 }
 
 

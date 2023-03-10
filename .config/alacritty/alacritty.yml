@@ -86,3 +86,4 @@ window:
   padding:
     x: 8
     y: 8
+  opacity: 1.0    

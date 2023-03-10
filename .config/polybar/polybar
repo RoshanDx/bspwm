@@ -1,17 +1,23 @@
 #!/bin/bash
 
 DIR="$HOME/.config/polybar"
+EXTERNAL_MONITOR="DisplayPort-0"
 
 # Terminate already running bar instances
 killall -q polybar
 
 # Wait until the processes have been shut down
-while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
+while pgrep -u $UID -x polybar > /dev/null; do sleep 1; done
 
-# Launch Polybar, using default config location ~/.config/polybar/config
 polybar main --config="$DIR"/config.ini &
-#polybar second --config=~/.config/polybar/config.ini &
+polybar external --config="$DIR"/config.ini &
+
+# Launch Polybar based on monitor input,
+if [[ $(xrandr -q | grep "${EXTERNAL_MONITOR} connected") ]]; then
+	polybar main --config="$DIR"/config.ini &
+	polybar external --config="$DIR"/config.ini &
+else
+	polybar main --config="$DIR"/config.ini &
+fi
 
 echo "Polybar launched..."
-
-
