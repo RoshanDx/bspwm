@@ -25,7 +25,7 @@ yay -S ksuperkey betterlockscreen postman-bin iosevka surfn-icons-git google-chr
 bibata-cursor-theme
 
 mkdir Downloads Pictures dev repo
-
+mkdir ~/Pictures/screenshots ~/Pictures/wallpapers
 ```
 
 * Manual Installation:
