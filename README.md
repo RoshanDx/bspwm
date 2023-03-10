@@ -18,10 +18,10 @@ Login Manager: lightdm
 sudo pacman -S picom polybar rofi neovim bspwm sxhkd alacritty thunar zsh ranger nitrogen xsensor unzip git dunst \
 cronie xclip lightdm lightdm-slick-greeter xdg-utils xdo xdotool firefox btop htop maim lxsession lxappearance \
 intellij-idea-community-edition visual-studio-code-bin viewnior ueberzug ttf-jetbrains-mono-nerd ttf-jetbrains-mono \
-asciiquarium dbeaver geany papirus-icon-theme arc-gtk-theme pulseaudio pulseaudio-alsa pavucontrol checkupdates \
+asciiquarium dbeaver geany papirus-icon-theme arc-gtk-theme pulseaudio pulseaudio-alsa pavucontrol checkupdates gvfs thunar-volman\
 networkmanager network-manager-applet iwd
 
-yay -S ksuperkey betterlockscreen postman-bin iosevka surfn-icons-git google-chrome networkmanager-dmenu-git \
+yay -S ksuperkey betterlockscreen postman-bin iosevka surfn-icons-git google-chrome networkmanager-dmenu-git tumbler-extra-thumbnailers \
 bibata-cursor-theme
 
 mkdir Downloads Pictures dev repo
