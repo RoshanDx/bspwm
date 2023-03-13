@@ -15,7 +15,7 @@ Polybar
 ## Installation
 * Dependencies:
 ```bash
-sudo pacman -S picom polybar rofi neovim bspwm sxhkd alacritty thunar zsh ranger nitrogen xsensor unzip git dunst \
+sudo pacman -S picom-git polybar rofi neovim bspwm sxhkd alacritty thunar zsh ranger nitrogen xsensor unzip git dunst \
 cronie xclip lightdm lightdm-slick-greeter xdg-utils xdo xdotool firefox btop htop maim lxsession lxappearance \
 intellij-idea-community-edition visual-studio-code-bin viewnior ueberzug ttf-jetbrains-mono-nerd ttf-jetbrains-mono \
 asciiquarium dbeaver geany papirus-icon-theme arc-gtk-theme pulseaudio pulseaudio-alsa pavucontrol checkupdates gvfs thunar-volman\
