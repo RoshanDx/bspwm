@@ -49,7 +49,7 @@ Section "InputClass"
 	Driver "libinput"
 	MatchIsTouchpad "on"
 	Option "Tapping" "on"
-EndSection	
+EndSection
 
 ```
 
