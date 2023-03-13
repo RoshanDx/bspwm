@@ -36,6 +36,7 @@ auto-cpufreq - Powermanagement
 tdrop-git - Scratchpad
 1password - Password Manager
 Teams - PWA version
+nbfc-linux - Control Fan Speed (Laptop)
 ```
 
 ```
