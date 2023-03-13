@@ -4,13 +4,13 @@ Terminal: Alacaritty
 
 Notification: Dunst
 
-Rofi
-
-Polybar
+Login Manager: LightDM
 
 Shell: zsh
 
-Login Manager: lightdm
+Rofi
+
+Polybar
 
 ## Installation
 * Dependencies:
