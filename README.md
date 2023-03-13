@@ -19,7 +19,8 @@ sudo pacman -S picom-git polybar rofi neovim bspwm sxhkd alacritty thunar zsh ra
 cronie xclip lightdm lightdm-slick-greeter xdg-utils xdo xdotool firefox btop htop maim lxsession lxappearance \
 intellij-idea-community-edition visual-studio-code-bin viewnior ueberzug ttf-jetbrains-mono-nerd ttf-jetbrains-mono \
 asciiquarium dbeaver geany papirus-icon-theme arc-gtk-theme pulseaudio pulseaudio-alsa pavucontrol checkupdates gvfs thunar-volman\
-networkmanager network-manager-applet iwd libinput xfce4-settings xf86-input-libinput xorg-input xdg-user-dirs
+networkmanager network-manager-applet iwd libinput xfce4-settings xf86-input-libinput xorg-input xdg-user-dirs \
+bluez bluez-utils
 
 yay -S ksuperkey betterlockscreen postman-bin iosevka surfn-icons-git google-chrome networkmanager-dmenu-git tumbler-extra-thumbnailers \
 bibata-cursor-theme
@@ -40,6 +41,8 @@ nbfc-linux - Control Fan Speed (Laptop)
 ```
 
 ```
+#Touchpad config
+
 cd /usr/share/X11/xorg.conf.d/
 sudo nvim 40-libinput.conf
 Add: 
