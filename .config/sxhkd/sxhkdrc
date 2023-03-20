@@ -1,4 +1,16 @@
 
+# Reload sxhkd
+super + Escape
+	pkill -usr1 -x sxhkd; notify-send 'SXHKD' 'Config Reloaded!'
+
+# Quit/Restart bspwm
+super + alt + {q,r}
+	bspc {quit,wm -r}
+
+# Close and kill
+super + {_,shift + }q
+	bspc node -{c,k}
+	
 # Terminal tile mode
 super + Return
 	alacritty
@@ -11,22 +23,10 @@ super + {_,shift +}Return
 super + F1
 	sh ~/.config/rofi/scripts/{app_menu}
 
-# Reload sxhkd
-super + Escape
-	pkill -usr1 -x sxhkd; notify-send 'SXHKD' 'Config Reloaded!'
-
-# Quit/Restart bspwm
-super + alt + {q,r}
-	bspc {quit,wm -r}
-
-# Close and kill
-super + {_,shift + }q
-	bspc node -{c,k}
-
-# Alternate between the tiled and monocle layout
+# Alternate between tiled and monocle
 super + m
 	bspc desktop -l next
-	
+
 # Move current window to a pre-selected space
 super + shift + m
     bspc node -n last.!automatic
@@ -131,7 +131,7 @@ super + slash
 
 # Screenshot
 Print
-    sh ~/.config/rofi/scripts/{screenshot}	
+    sh ~/.config/rofi/scripts/{screenshot}
 
 # Toggle picom
 super + alt + o
@@ -162,5 +162,18 @@ XF86MonBrightnessDown
 	changebrightness down
 	
 # Pavucontrol
-super + {_,shift +}p
+super + shift +p
 	tdrop -ma -w 40% -y 30% -x 30% -n Pavucontrol --class=Pavucontrol pavucontrol
+	
+# App launcher
+super + shift + c
+	sh ~/.config/rofi/scripts/{calculator}
+
+super + F4
+	bsp-layout set tiled && bsp-layout remove && notify-send -u normal -t 2000 'Layout Reset'
+
+super + F5
+	bsp-layout set tall && notify-send -u normal -t 2000 'Layout: Master'
+
+super + F6
+	bsp-layout set wide && notify-send -u normal -t 2000 'Layout: Wide'

@@ -1,0 +1,3 @@
+#!/bin/sh
+
+bsp-layout next --layouts tall,monocle,wide,tiled

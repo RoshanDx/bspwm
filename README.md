@@ -20,7 +20,7 @@ cronie xclip lightdm lightdm-slick-greeter xdg-utils xdo xdotool firefox btop ht
 intellij-idea-community-edition visual-studio-code-bin viewnior ueberzug ttf-jetbrains-mono-nerd ttf-jetbrains-mono \
 asciiquarium dbeaver geany papirus-icon-theme arc-gtk-theme pulseaudio pulseaudio-alsa pavucontrol checkupdates gvfs thunar-volman\
 networkmanager network-manager-applet iwd libinput xfce4-settings xf86-input-libinput xorg-input xdg-user-dirs \
-bluez bluez-utils
+bluez bluez-utils rofi-calc libreoffice-still
 
 yay -S ksuperkey betterlockscreen postman-bin iosevka surfn-icons-git google-chrome networkmanager-dmenu-git tumbler-extra-thumbnailers \
 bibata-cursor-theme

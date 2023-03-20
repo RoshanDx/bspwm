@@ -1,11 +1,15 @@
 configuration {
-    show-icons:                     true;
+    show-icons:                     false;
     icon-theme: 		    "Papirus";
+    display-drun: 		    " ";
+    display-window: 		    " 﩯";
+    display-run: 		    " ";
     drun-display-format:            "{name}";
     disable-history:                false;
     fullscreen:                     false;
     hide-scrollbar: 		    true;
-    sidebar-mode: 		    false;
+    sidebar-mode: 	            false;
+    display-dmenu: 		    " ";
 }
 
 @import "fonts.rasi"
@@ -16,19 +20,19 @@ window {
     background-color:               @bg;
     text-color:                     @fg;
     border:			    4px;
-    border-color:	            @ac;
+    border-color:		    @ac;
     border-radius:                  0;
-    width:			    calc(50% min 256);
+    width:			    15%;
     location:                       center;
     x-offset:                       0;
     y-offset:                       0;
 }
 
 prompt {
-    enabled: 			    true;
-    padding: 			    0.1% 1% 0% -0.5%;
-    background-color: 	            @al;
-    text-color: 		    @fg;
+    enabled: 			   true;
+    padding: 			   0.1% 1% 0% -0.5%;
+    background-color: 		   @al;
+    text-color: 		   @fg;
 }
 
 entry {
@@ -37,13 +41,12 @@ entry {
     placeholder-color:              @fg;
     expand:                         true;
     horizontal-align:               0;
-    placeholder:                    "Search";
+    placeholder:                    "Calculate ...";
     padding:                        0.10% 0% 0% 0%;
     blink:                          true;
 }
 
 inputbar {
-    enabled:                        false;
     children: 			    [ prompt, entry ];
     background-color:               @ac;
     text-color:                     @fg;
@@ -59,7 +62,8 @@ listview {
     background-color:               @al;
     padding:                        10px;
     columns:                        1;
-    lines:                          6;
+    fixed-height: true;
+    lines:                          5;
     spacing:                        0%;
     cycle:                          false;
     dynamic:                        true;
@@ -71,9 +75,19 @@ mainbox {
     border:			    0% 0% 0% 0%;
     border-radius:                  0% 0% 0% 0%;
     border-color:		    @ac;
-    children:                       [ inputbar, listview ];
     spacing:                        0%;
     padding:                        0%;
+}
+
+message {
+    padding: 20px;
+    background-color: @bg;
+    text-color: @bg;
+}
+
+textbox {
+     background-color: @bg;
+     text-color: @fg;
 }
 
 element {
@@ -81,7 +95,7 @@ element {
     text-color:                     @fg;
     orientation:                    horizontal;
     border-radius:                  0%;
-    padding:                        15px;
+    padding: 			    15px;
 }
 
 element-icon {
@@ -94,7 +108,7 @@ element-text {
     background-color:               @bg;
     text-color:                     @fg;
     expand:                         true;
-    margin:                         0 0 0 -20px;
+    margin:                         0% 0% 0% 0%;
 }
 
 element selected {
@@ -119,5 +133,4 @@ element-text selected {
     vertical-align:                 0.5;
     margin:                         0.5% 0.5% -0.5% 0.5%;
 }
-
 

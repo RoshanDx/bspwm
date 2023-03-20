@@ -20,7 +20,7 @@ get_confirmation() {
 get_options() {
   echo "  Poweroff"
   echo "  Reboot"
-#  echo "  Hibernate"
+  echo "  Hibernate"
   echo "  Lock"
   echo "  Suspend"
   echo "  Log out"
@@ -55,9 +55,9 @@ main() {
  	fi
     # systemctl reboot
     ;;
-#  ' Hibernate')
-#     systemctl hibernate
-#    ;;
+  '  Hibernate')
+	systemctl hibernate; betterlockscreen --lock; 
+    ;;
   '  Lock')
 #        ans=$(get_confirmation)
 #        if [[ $ans == "yes" ]] || [[ $ans == "YES" ]] || [[ $ans == "y" ]]; then

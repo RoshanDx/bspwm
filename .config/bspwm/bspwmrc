@@ -32,7 +32,7 @@ bspc wm --adopt-orphans
 bspc rule -r *:*
 
 #Define screensize for floating window for multiple resolution
-windowwidth=800
+windowwidth=1000
 windowheight=600
 screenwidth=$(xdpyinfo | awk -F'[ x]+' '/dimensions:/{print $3}')
 screenheight=$(xdpyinfo | awk -F'[ x]+' '/dimensions:/{print $4}')
@@ -77,4 +77,4 @@ xsetroot -cursor_name left_ptr &
 sh $HOME/.config/dunst/dunst
 pgrep bspswallow || bspswallow &
 
-killall picom
+#killall picom
