@@ -162,8 +162,12 @@ XF86MonBrightnessDown
 	changebrightness down
 	
 # Pavucontrol
-super + shift +p
+super + shift + p
 	tdrop -ma -w 40% -y 30% -x 30% -n Pavucontrol --class=Pavucontrol pavucontrol
+	
+# Thunar
+super + shift + e
+	tdrop -ma -w 40% -y 30% -x 30% -n thunar --class=thunar thunar
 	
 # App launcher
 super + shift + c
