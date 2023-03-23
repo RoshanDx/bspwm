@@ -115,7 +115,7 @@ super + {Left,Down,Up,Right}
 
 # Open file manager
 super + e
-	thunar
+	tdrop -ma -w 40% -y 30% -x 30% -n thunar --class=thunar thunar
 
 # Lockscreen
 ctrl + alt + l
@@ -169,15 +169,18 @@ super + shift + p
 super + shift + e
 	tdrop -ma -w 40% -y 30% -x 30% -n thunar --class=thunar thunar
 	
-# App launcher
+# Calculator
 super + shift + c
 	sh ~/.config/rofi/scripts/{calculator}
 
+# Reset Layout
 super + F4
 	bsp-layout set tiled && bsp-layout remove && notify-send -u normal -t 2000 'Layout Reset'
 
+# Set Master Layout
 super + F5
 	bsp-layout set tall && notify-send -u normal -t 2000 'Layout: Master'
 
+# Set Wide Layout
 super + F6
 	bsp-layout set wide && notify-send -u normal -t 2000 'Layout: Wide'

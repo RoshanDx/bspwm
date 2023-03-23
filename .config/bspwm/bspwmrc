@@ -76,5 +76,6 @@ nitrogen --restore &
 xsetroot -cursor_name left_ptr &
 sh $HOME/.config/dunst/dunst
 pgrep bspswallow || bspswallow &
+autolock &
 
 #killall picom
