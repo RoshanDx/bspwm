@@ -23,7 +23,7 @@ networkmanager network-manager-applet iwd libinput xfce4-settings xf86-input-lib
 bluez bluez-utils rofi-calc libreoffice-still kitty imagemagick
 
 yay -S ksuperkey betterlockscreen postman-bin iosevka surfn-icons-git google-chrome networkmanager-dmenu-git tumbler-extra-thumbnailers \
-bibata-cursor-theme xidlehook
+bibata-cursor-theme xidlehook zscroll-git
 
 mkdir Downloads Pictures dev repo
 mkdir ~/Pictures/screenshots ~/Pictures/wallpapers

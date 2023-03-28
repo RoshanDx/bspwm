@@ -1,0 +1,2 @@
+#!/bin/bash
+echo "$(<~/.local/bin/zscroll-quote/current_news)"
