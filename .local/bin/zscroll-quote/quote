@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-zscroll -b "⮕ " -l 30 \
+zscroll -l 40 \
         --delay 0.45 \
-        --match-command "$HOME/.local/bin/zscroll-quote/get_news_status" \
-        --update-check true "$HOME/.local/bin/zscroll-quote/get_news_status" &
+        --match-command "$HOME/.local/bin/zscroll-quote/get-new-quote" \
+        --update-check true "$HOME/.local/bin/zscroll-quote/get-new-quote" &
 
 wait
 
