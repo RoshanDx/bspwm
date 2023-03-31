@@ -6,8 +6,6 @@ Notification: Dunst
 
 Login Manager: LightDM
 
-Shell: zsh
-
 Rofi
 
 Polybar
