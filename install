@@ -1,0 +1,167 @@
+#!/bin/bash
+
+echo -ne "
+-------------------------------------------------------------------------
+                    Install Dependencies
+-------------------------------------------------------------------------
+"
+
+# Update Arch
+sudo pacman -S archlinux-keyring --noconfirm
+sudo pacman -Syu --noconfirm
+
+# Install AUR Yay
+cd /opt/
+sudo git clone https://aur.archlinux.org/yay-bin.git
+sudo chown -R $USER ./yay-bin
+cd yay-bin
+makepkg -si --noconfirm
+echo "yay Installed"
+
+# Install Dependecies
+sudo pacman -S --noconfirm picom-git polybar rofi neovim bspwm sxhkd alacritty thunar zsh ranger nitrogen xsensor unzip git dunst \
+cronie xclip lightdm lightdm-slick-greeter xdg-utils xdo xdotool firefox btop htop maim lxsession lxappearance \
+intellij-idea-community-edition visual-studio-code-bin viewnior ueberzug ttf-jetbrains-mono-nerd ttf-jetbrains-mono \
+asciiquarium dbeaver geany papirus-icon-theme arc-gtk-theme pulseaudio pulseaudio-alsa pavucontrol checkupdates gvfs thunar-volman\
+networkmanager network-manager-applet iwd libinput xfce4-settings xf86-input-libinput xorg-input xdg-user-dirs \
+bluez bluez-utils rofi-calc libreoffice-still kitty imagemagick acpi ufw
+echo "Dependencies Installed"
+
+
+# Install Yay Dependencies
+yay -S --noconfirm ksuperkey betterlockscreen postman-bin iosevka surfn-icons-git google-chrome networkmanager-dmenu-git tumbler-extra-thumbnailers \
+bibata-cursor-theme xidlehook zscroll-git
+echo "Yay Dependencies Installed"
+
+echo -ne "
+-------------------------------------------------------------------------
+                     Set Config
+-------------------------------------------------------------------------
+"
+
+### Check if a directory does not exist ###
+if [ ! -d "/usr/share/fonts/TTF" ] 
+then
+    echo "Directory /usr/share/fonts/TTF DOES NOT exists. Creating a new one" 
+    sudo mkdir /usr/share/fonts/TTF
+fi
+
+mkdir Downloads Pictures Documents Videos dev repo
+mkdir ~/Pictures/screenshots ~/Pictures/wallpapers
+
+# Copy User's Config
+cd ~/repo
+git clone https://github.com/RoshanDx/bspwm.git
+cd bspwm
+cp -r .config/* ~/.config
+cp .profile .xinitrc .Xresources .Xauthority ~/
+echo "Config folder copied"
+
+#Copy User's Script 
+if [ ! -d "~/.local/bin" ] 
+then
+    echo "Directory /.local/bin DOES NOT exists. Creating a new one" 
+    sudo mkdir ~/.local/bin
+fi
+if [ ! -d "~/.local/share" ] 
+then
+    echo "Directory /.local/share DOES NOT exists. Creating a new one" 
+    sudo mkdir ~/.local/share
+fi
+cp -r bspwm/.local/bin/. ~/.local/bin
+cp -r bspwm/.local/share/. ~/.local/share
+cp -r
+echo "User's Script Copied"
+
+# Copy And Set Wallpaper
+cp bspwm/wallpaper/. ~/Pictures/wallpapers
+nitrogen --set-centered ~/Pictures/wallpaper/samurai.jpg
+echo "Wallpaper Set"
+
+#Copy Fonts
+sudo cp bspwm/fonts/. /usr/share/fonts/
+ech "Fonts Copied"
+
+#Set Cronjob
+lines="*/5 * * * * /home/$USER/.local/bin/batterynotify"
+echo "$lines" | sudo crontab -u $USER
+
+# Set Udev Rules
+sudo cp bspwm/udev-rules/* /etc/udev/rules.d/
+echo "Udev rules Copied"
+
+# Set Display Manager Settings
+sudo cp -r bspwm/displaymanager/. /etc
+echo "Display Manager Settings Copied"
+
+# Set Lockscreen
+betterlockscreen -u ~/Pictures/wallpapers/samurai.jpg
+echo "Lockscreen Set"
+
+echo -ne "
+
+-------------------------------------------------------------------------
+                    3rd Apps
+-------------------------------------------------------------------------
+"
+
+cd ~/repo
+
+# Password Manager (1Password)
+curl -sS https://downloads.1password.com/linux/keys/1password.asc | gpg --import
+git clone https://aur.archlinux.org/1password.git
+cd 1password
+makepkg -si --noconfirm
+echo "Password Manager Installed"
+cd ..
+
+# Tdrop
+git clone https://github.com/noctuid/tdrop.git
+cd tdrop
+sudo make install
+echo "Tdrop Installed"
+cd ..
+
+# Brillo
+git clone https://github.com/CameronNemo/brillo.git
+cd brillo
+sudo make install.setgid
+echo "Brillo Installed"
+cd ..
+
+# Nbfc-linux
+git clone https://github.com/nbfc-linux/nbfc-linux.git
+cd nbfc-linux
+sudo make install
+echo "Nbfc-linux Installed"
+cd ..
+
+# Auto-Cpufreq (Need Manual Selection)
+git clone https://github.com/AdnanHodzic/auto-cpufreq.git
+cd auto-cpufreq && sudo ./auto-cpufreq-installer
+sudo auto-cpufreq --install
+echo "Auto-Cpufreq Installed"
+cd ..
+
+echo -ne "
+-------------------------------------------------------------------------
+                    Enabling Essential Services
+-------------------------------------------------------------------------
+"
+systemctl enable --now NetworkManager
+echo "NetworkManager enabled"
+systemctl enable --now NetworkManager
+echo "NetworkManager enabled"
+
+-------------------------------------------------------------------------
+                    Setup Firewall Rules
+-------------------------------------------------------------------------
+
+sudo ufw limit 22/tcp
+sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+sudo ufw enable
+
+
