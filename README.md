@@ -15,18 +15,19 @@ Polybar
 ## Installation
 * Dependencies:
 ```bash
-sudo pacman -S picom-git polybar rofi neovim bspwm sxhkd alacritty thunar zsh ranger nitrogen xsensor unzip git dunst \
+sudo pacman -S --noconfirm picom-git polybar rofi neovim bspwm sxhkd alacritty thunar zsh ranger nitrogen xsensor unzip git dunst \
 cronie xclip lightdm lightdm-slick-greeter xdg-utils xdo xdotool firefox btop htop maim lxsession lxappearance \
 intellij-idea-community-edition visual-studio-code-bin viewnior ueberzug ttf-jetbrains-mono-nerd ttf-jetbrains-mono \
 asciiquarium dbeaver geany papirus-icon-theme arc-gtk-theme pulseaudio pulseaudio-alsa pavucontrol checkupdates gvfs thunar-volman\
 networkmanager network-manager-applet iwd libinput xfce4-settings xf86-input-libinput xorg-input xdg-user-dirs \
-bluez bluez-utils rofi-calc libreoffice-still kitty imagemagick acpi
+bluez bluez-utils rofi-calc libreoffice-still kitty imagemagick acpi ufw
 
-yay -S ksuperkey betterlockscreen postman-bin iosevka surfn-icons-git google-chrome networkmanager-dmenu-git tumbler-extra-thumbnailers \
-bibata-cursor-theme xidlehook zscroll-git
+yay -S --noconfirm ksuperkey betterlockscreen postman-bin iosevka surfn-icons-git google-chrome networkmanager-dmenu-git tumbler-extra-thumbnailers \
+bibata-cursor-theme xidlehook zscroll-git rofi-calc
 
-mkdir Downloads Pictures dev repo
+mkdir Downloads Pictures Documents Videos dev repo
 mkdir ~/Pictures/screenshots ~/Pictures/wallpapers
+
 ```
 
 * Manual Installation:
