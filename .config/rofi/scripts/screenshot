@@ -2,9 +2,9 @@
 
 # rofi theme
 theme="$HOME/.config/rofi/themes/screenshot.rasi"
-IMG_PATH=/home/walter/Pictures/screenshot/
+IMG_PATH=/home/$USER/Pictures/screenshot/
 notify="notify-send -u low -t 2000 'Screenshot saved' -u normal"
-output='/home/'$USER'/Pictures/screenshots/'$(date +%Y-%m-%d-%T)'-screenshot.png'
+output="/home/${USER}/Pictures/screenshots/'$(date +%Y-%m-%d-%T)'-screenshot.png"
 
 # options to be displayed
 option0="  Screen"
