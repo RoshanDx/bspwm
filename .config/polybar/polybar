@@ -9,12 +9,21 @@ killall -q polybar
 # Wait until the processes have been shut down
 while pgrep -u $UID -x polybar > /dev/null; do sleep 1; done
 
+# Launch Polybar based on monitor input
+for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
+	MONITOR=$m polybar main --config="$DIR"/config.ini &
+done
+
 # Launch Polybar based on monitor input,
-if [[ $(xrandr -q | grep "${EXTERNAL_MONITOR} connected") ]]; then
-	polybar main --config="$DIR"/config.ini &
-	polybar external --config="$DIR"/config.ini &
-else
-	polybar main --config="$DIR"/config.ini &
-fi
+#if [[ $(xrandr -q | grep "${EXTERNAL_MONITOR} connected") ]]; then
+  #for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
+    #MONITOR=$m polybar main --config="$DIR"/config.ini &
+	#MONITOR=$m polybar external --config="$DIR"/config.ini &
+  #done
+#else
+  #for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
+    #MONITOR=$m polybar main --config="$DIR"/config.ini &
+  #done
+#fi
 
 echo "Polybar launched..."

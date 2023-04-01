@@ -29,7 +29,7 @@ get_options() {
 main() {
 
   # get choice from rofi
-  choice=$( (get_options) | rofi -show -dmenu -p "" -theme "$theme")
+  choice=$( (get_options) | rofi -show -dmenu -p "" -i -theme "$theme")
 
   # run the selected command
   case $choice in

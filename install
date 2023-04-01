@@ -84,9 +84,15 @@ then
     echo "Directory /.local/share DOES NOT exists. Creating a new one" 
     sudo mkdir ~/.local/share
 fi
+
 cp -r bspwm/.local/bin/. ~/.local/bin
 cp -r bspwm/.local/share/. ~/.local/share
-cp -r
+
+if [[ $SYSTEM = "desktop" ]]; then
+    cd ~/.local/bin
+    rm -rf changebrightness chargingnotify batterynotify
+    cd ~/repo
+fi
 echo "User's Script Copied"
 
 # Copy And Set Wallpaper
@@ -98,13 +104,18 @@ echo "Wallpaper Set"
 sudo cp bspwm/fonts/. /usr/share/fonts/
 ech "Fonts Copied"
 
-#Set Cronjob
-lines="*/5 * * * * /home/$USER/.local/bin/batterynotify"
-echo "$lines" | sudo crontab -u $USER
+# Laptop config
+if [[ $SYSTEM = "laptop" ]]; then
 
-# Set Udev Rules
-sudo cp bspwm/udev-rules/* /etc/udev/rules.d/
-echo "Udev rules Copied"
+    #Set Cronjob
+	lines="*/5 * * * * /home/$USER/.local/bin/batterynotify"
+    echo "$lines" | sudo crontab -u $USER
+
+    # Set Udev Rules
+    sudo cp bspwm/udev-rules/* /etc/udev/rules.d/
+    echo "Udev rules Copied"
+fi	
+
 
 # Set Display Manager Settings
 sudo cp -r bspwm/displaymanager/. /etc
@@ -138,26 +149,30 @@ sudo make install
 echo "Tdrop Installed"
 cd ..
 
-# Brillo
-git clone https://github.com/CameronNemo/brillo.git
-cd brillo
-sudo make install.setgid
-echo "Brillo Installed"
-cd ..
+if [[ $SYSTEM = "laptop" ]]; then
+    # Brillo
+    git clone https://github.com/CameronNemo/brillo.git
+    cd brillo
+    sudo make install.setgid
+    echo "Brillo Installed"
+    cd ..
 
-# Nbfc-linux
-git clone https://github.com/nbfc-linux/nbfc-linux.git
-cd nbfc-linux
-sudo make install
-echo "Nbfc-linux Installed"
-cd ..
+    # Nbfc-linux    
+    git clone https://github.com/nbfc-linux/nbfc-linux.git
+    cd nbfc-linux
+    sudo make install
+    echo "Nbfc-linux Installed"
+    cd ..
 
-# Auto-Cpufreq (Need Manual Selection)
-git clone https://github.com/AdnanHodzic/auto-cpufreq.git
-cd auto-cpufreq && sudo ./auto-cpufreq-installer
-sudo auto-cpufreq --install
-echo "Auto-Cpufreq Installed"
-cd ..
+    # Auto-Cpufreq (Need Manual Selection)
+    git clone https://github.com/AdnanHodzic/auto-cpufreq.git
+    cd auto-cpufreq && sudo ./auto-cpufreq-installer
+    sudo auto-cpufreq --install
+    echo "Auto-Cpufreq Installed"
+    cd ..
+
+fi
+
 
 echo -ne "
 -------------------------------------------------------------------------
@@ -195,3 +210,10 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
 git clone https://github.com/MichaelAquilina/zsh-you-should-use.git
 sudo ln ~/.config/zsh/.zshrc .zshrc
 sudo chsh -s /bin/zsh
+
+echo -ne "
+-------------------------------------------------------------------------
+                    Installation Complete, Rebooting ...
+-------------------------------------------------------------------------
+"
+sudo reboot now

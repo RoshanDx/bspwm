@@ -46,11 +46,11 @@ bspc rule -a Postman desktop='^3'
 #DBeaver
 bspc rule -a DBeaver desktop='^4'
 #Citrix
-bspc rule -a Wfica desktop='^7' state=pseudo_tiled follow=on
-bspc rule -a "Windows sign-in" desktop='^7' state=floating
-bspc rule -a "Wfica_Splash" desktop='^7' state=floating
-bspc rule -a "Citrix Workspace" desktop='^7' state=pseudo_tiled
-bspc rule -a "Remote Desktop Connection" desktop='^7' state=pseudo_tiled
+bspc rule -a Wfica desktop='^5' state=pseudo_tiled follow=on
+bspc rule -a "Windows sign-in" desktop='^5' state=floating
+bspc rule -a "Wfica_Splash" desktop='^5' state=floating
+bspc rule -a "Citrix Workspace" desktop='^5' state=pseudo_tiled
+bspc rule -a "Remote Desktop Connection" desktop='^5' state=pseudo_tiled
 
 ## Always Floating Apps
 declare -a floating=(alacritty-float Pcmanfm Thunar Onboard Yad Nitrogen \
@@ -75,7 +75,7 @@ picom --legacy-backends &
 nitrogen --restore &
 xsetroot -cursor_name left_ptr &
 sh $HOME/.config/dunst/dunst
-pgrep bspswallow || bspswallow &
+#pgrep bspswallow || bspswallow &
 autolock &
 
 #killall picom
