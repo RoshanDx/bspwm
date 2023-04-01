@@ -150,8 +150,8 @@ echo -ne "
 "
 systemctl enable --now NetworkManager
 echo "NetworkManager enabled"
-systemctl enable --now NetworkManager
-echo "NetworkManager enabled"
+systemctl enable --now lightdm
+echo "Lightdm enabled"
 
 echo -ne "
 -------------------------------------------------------------------------
