@@ -1,5 +1,21 @@
 #!/bin/bash
 
+SYSTEM=
+
+if [[ $# -eq 0 || $# -gt 1 ]] ; then
+    echo "Unable to run install script, please run with for example 'install desktop/laptop'"
+    exit 1
+else
+	if [[ $1 = "laptop" ]]; then
+		SYSTEM="laptop"
+	else 
+		SYSTEM="dekstop"
+	fi	
+fi
+
+echo "Installing based on system: $SYSTEM"
+
+
 echo -ne "
 -------------------------------------------------------------------------
                     Install Dependencies
