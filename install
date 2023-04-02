@@ -15,12 +15,15 @@ fi
 
 echo "Installing based on system: $SYSTEM"
 
-
 echo -ne "
 -------------------------------------------------------------------------
                     Install Dependencies
 -------------------------------------------------------------------------
 "
+
+## GET SU PRIVILEGES
+sudo -v
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 # Update Arch
 sudo pacman -S archlinux-keyring --noconfirm
@@ -182,7 +185,7 @@ echo -ne "
 "
 # systemctl enable --now NetworkManager
 # echo "NetworkManager enabled"
-systemctl enable --now lightdm
+sudo systemctl enable lightdm
 echo "Lightdm enabled"
 
 echo -ne "
