@@ -38,14 +38,14 @@ makepkg -si --noconfirm
 
 echo "yay Installed"
 
-# Install Dependecies
-sudo pacman -S --noconfirm xorg xorg-init neofetch polybar rofi neovim vim bspwm sxhkd alacritty thunar zsh ranger nitrogen xsensors unzip dunst \
-cronie xclip lightdm lightdm-slick-greeter xdg-utils xdo xdotool firefox btop htop maim lxsession lxappearance \
-intellij-idea-community-edition viewnior ueberzug ttf-jetbrains-mono-nerd ttf-jetbrains-mono \
-asciiquarium dbeaver geany papirus-icon-theme arc-gtk-theme pulseaudio pulseaudio-alsa pavucontrol pacman-contrib gvfs thunar-volman \
-networkmanager network-manager-applet iwd xfce4-settings xdg-user-dirs \
-bluez bluez-utils rofi-calc libreoffice-still kitty imagemagick acpi ufw
+pkgs='xorg neofetch polybar rofi neovim vim bspwm sxhkd alacritty thunar zsh ranger nitrogen xsensors unzip dunst 
+cronie xclip lightdm lightdm-slick-greeter xdg-utils xdo xdotool firefox btop htop maim lxsession lxappearance 
+intellij-idea-community-edition viewnior ueberzug ttf-jetbrains-mono-nerd ttf-jetbrains-mono 
+asciiquarium dbeaver geany papirus-icon-theme arc-gtk-theme pulseaudio pulseaudio-alsa pavucontrol pacman-contrib gvfs thunar-volman 
+networkmanager network-manager-applet iwd xfce4-settings xdg-user-dirs bluez bluez-utils rofi-calc libreoffice-still kitty imagemagick acpi ufw'
 
+# Install Dependecies
+sudo pacman -S --noconfirm $pkgs
 echo "Dependencies Installed"
 
 # Install Yay Dependencies
@@ -219,3 +219,11 @@ echo -ne "
                     Installation Complete, Rebooting ...
 -------------------------------------------------------------------------
 "
+
+for pkg in $pkgs; do
+  if pacman -Qs $pkg > /dev/null ; then
+    echo "$pkg installed"
+  else
+    echo "$pkg not installed"
+  fi    
+done

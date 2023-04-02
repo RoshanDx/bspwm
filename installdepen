@@ -21,14 +21,14 @@ asciiquarium dbeaver geany papirus-icon-theme arc-gtk-theme pulseaudio pulseaudi
 networkmanager network-manager-applet iwd xfce4-settings xdg-user-dirs bluez bluez-utils rofi-calc libreoffice-still kitty imagemagick acpi ufw'
 
 for pkg in $pkgs; do
-  if pacman -Qs $package > /dev/null ; then
-    echo "$package installed"
+  if pacman -Qs $pkg > /dev/null ; then
+    echo "$pkg installed"
   else
-    echo "$package not installed"
+    echo "$pkg not installed"
   fi    
 done
 
 # Install Dependecies
-sudo pacman -S --noconfirm "$pkgs"
+#sudo pacman -S --noconfirm $pkgs
 echo "Dependencies Installed"
 
