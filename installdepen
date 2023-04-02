@@ -14,27 +14,12 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 sudo pacman -S archlinux-keyring --noconfirm
 sudo pacman -Syu --noconfirm
 
-# Install AUR Yay
-cd /opt/
-sudo git clone https://aur.archlinux.org/yay-bin.git
-sudo chown -R $USER ./yay-bin
-cd yay-bin
-makepkg -si --noconfirm
-
-echo "yay Installed"
-
 # Install Dependecies
-sudo pacman -S --noconfirm xorg-xrandr neofetch polybar rofi neovim vim bspwm sxhkd alacritty thunar zsh ranger nitrogen xsensors unzip dunst \
+sudo pacman -S --noconfirm xorg neofetch polybar rofi neovim vim bspwm sxhkd alacritty thunar zsh ranger nitrogen xsensors unzip dunst \
 cronie xclip lightdm lightdm-slick-greeter xdg-utils xdo xdotool firefox btop htop maim lxsession lxappearance \
 intellij-idea-community-edition viewnior ueberzug ttf-jetbrains-mono-nerd ttf-jetbrains-mono \
 asciiquarium dbeaver geany papirus-icon-theme arc-gtk-theme pulseaudio pulseaudio-alsa pavucontrol pacman-contrib gvfs thunar-volman \
-networkmanager network-manager-applet iwd xfce4-settings xorg-input xdg-user-dirs \
+networkmanager network-manager-applet iwd xfce4-settings xdg-user-dirs \
 bluez bluez-utils rofi-calc libreoffice-still kitty imagemagick acpi ufw
 
 echo "Dependencies Installed"
-
-# Install Yay Dependencies
-yay -S --noconfirm picom-git ksuperkey betterlockscreen postman-bin ttf-iosevka surfn-icons-git google-chrome networkmanager-dmenu-git tumbler-extra-thumbnailers \
-bibata-cursor-theme xidlehook zscroll-git visual-studio-code-bin
-
-echo "Yay Dependencies Installed"
