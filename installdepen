@@ -14,31 +14,21 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 sudo pacman -S archlinux-keyring --noconfirm
 sudo pacman -Syu --noconfirm
 
-# Install Dependecies
-sudo pacman -S --noconfirm xorg neofetch polybar rofi neovim vim bspwm sxhkd alacritty thunar zsh ranger nitrogen xsensors unzip dunst \
-cronie xclip lightdm lightdm-slick-greeter xdg-utils xdo xdotool firefox btop htop maim lxsession lxappearance \
-intellij-idea-community-edition viewnior ueberzug ttf-jetbrains-mono-nerd ttf-jetbrains-mono \
-asciiquarium dbeaver geany papirus-icon-theme arc-gtk-theme pulseaudio pulseaudio-alsa pavucontrol pacman-contrib gvfs thunar-volman \
-networkmanager network-manager-applet iwd xfce4-settings xdg-user-dirs \
-bluez bluez-utils rofi-calc libreoffice-still kitty imagemagick acpi ufw
-
-echo "Dependencies Installed"
-
-
 pkgs='xorg neofetch polybar rofi neovim vim bspwm sxhkd alacritty thunar zsh ranger nitrogen xsensors unzip dunst 
 cronie xclip lightdm lightdm-slick-greeter xdg-utils xdo xdotool firefox btop htop maim lxsession lxappearance 
 intellij-idea-community-edition viewnior ueberzug ttf-jetbrains-mono-nerd ttf-jetbrains-mono 
 asciiquarium dbeaver geany papirus-icon-theme arc-gtk-theme pulseaudio pulseaudio-alsa pavucontrol pacman-contrib gvfs thunar-volman 
 networkmanager network-manager-applet iwd xfce4-settings xdg-user-dirs bluez bluez-utils rofi-calc libreoffice-still kitty imagemagick acpi ufw'
 
-install=false
 for pkg in $pkgs; do
-  status="$(dpkg-query -W --showformat='${db:Status-Status}' "$pkg" 2>&1)"
-  if [ ! $? = 0 ] || [ ! "$status" = installed ]; then
-    install=true
-    break
-  fi
+  if pacman -Qs $package > /dev/null ; then
+    echo "$package installed"
+  else
+    echo "$package not installed"
+  fi    
 done
-if "$install"; then
-  #sudo apt install $pkgs
-fi
+
+# Install Dependecies
+sudo pacman -S --noconfirm "$pkgs"
+echo "Dependencies Installed"
+
