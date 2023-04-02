@@ -214,4 +214,3 @@ echo -ne "
                     Installation Complete, Rebooting ...
 -------------------------------------------------------------------------
 "
-sudo reboot now
