@@ -39,7 +39,7 @@ makepkg -si --noconfirm
 echo "yay Installed"
 
 pkgs='xorg xorg-xinit neofetch polybar rofi neovim vim bspwm sxhkd alacritty thunar zsh ranger nitrogen xsensors unzip dunst 
-cronie xclip lightdm lightdm-slick-greeter xdg-utils xdo xdotool firefox btop htop maim lxsession lxappearance 
+cronie xclip xdg-utils xdo xdotool firefox btop htop maim lxsession lxappearance 
 intellij-idea-community-edition viewnior ueberzug ttf-jetbrains-mono-nerd ttf-jetbrains-mono 
 asciiquarium dbeaver geany papirus-icon-theme arc-gtk-theme pulseaudio pulseaudio-alsa pavucontrol pacman-contrib gvfs thunar-volman 
 networkmanager network-manager-applet iwd xfce4-settings xdg-user-dirs bluez bluez-utils rofi-calc libreoffice-still kitty imagemagick acpi ufw'
@@ -50,7 +50,7 @@ echo "Dependencies Installed"
 
 # Install Yay Dependencies
 yay -S --noconfirm picom-git ksuperkey betterlockscreen postman-bin ttf-iosevka surfn-icons-git google-chrome networkmanager-dmenu-git tumbler-extra-thumbnailers \
-bibata-cursor-theme xidlehook zscroll-git visual-studio-code-bin
+bibata-cursor-theme xidlehook zscroll-git visual-studio-code-bin zsh-theme-powerlevel10k bsp-layout
 
 echo "Yay Dependencies Installed"
 
@@ -80,7 +80,7 @@ sudo cp wallpaper/samurai.jpg /usr/share/backgrounds/
 echo "Config folder copied"
 
 #Copy User's Script
-cp -r .local ~
+cp -r .local ~/
 
 if [[ $SYSTEM = "desktop" ]]; then
     cd ~/.local/bin
@@ -91,12 +91,12 @@ fi
 echo "User's Script Copied"
 
 # Copy And Set Wallpaper
-cp wallpaper/. ~/Pictures/wallpapers
-nitrogen --set-centered ~/Pictures/wallpaper/samurai.jpg
+cp -r wallpaper/. ~/Pictures/wallpapers/
+nitrogen --set-scaled ~/Pictures/wallpaper/samurai.jpg
 echo "Wallpaper Set"
 
 #Copy Fonts
-sudo cp fonts/. /usr/share/fonts/
+sudo cp -r fonts/. /usr/share/fonts/
 echo "Fonts Copied"
 
 # Laptop config
@@ -176,8 +176,6 @@ echo -ne "
 "
 systemctl enable NetworkManager
 echo "NetworkManager enabled"
-sudo systemctl enable lightdm
-echo "Lightdm enabled"
 
 echo -ne "
 -------------------------------------------------------------------------
@@ -202,8 +200,24 @@ git clone https://github.com/MichaelAquilina/zsh-you-should-use.git
 git clone https://github.com/zsh-users/zsh-autosuggestions.git
 git clone https://github.com/zsh-users/zsh-history-substring-search.git
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+cd ~
 sudo ln ~/.config/zsh/.zshrc .zshrc
 sudo chsh -s /bin/zsh
+chsh -s /bin/zsh
+
+echo -ne "
+-------------------------------------------------------------------------
+                    Setup Login Manager
+-------------------------------------------------------------------------
+"
+
+sudo pacman -S lightdm lightdm-slick-greeter
+echo "LightDM Installed"
+sudo cp -r ~/repo/bspwm/displaymanager/* /etc/
+echo "LightDM Config Copied"
+sudo systemctl enable lightdm
+echo "LightDM enabled"
+
 
 echo -ne "
 -------------------------------------------------------------------------
@@ -211,10 +225,10 @@ echo -ne "
 -------------------------------------------------------------------------
 "
 
-for pkg in $pkgs; do
-  if pacman -Qs $pkg > /dev/null ; then
-    echo "$pkg installed"
-  else
-    echo "$pkg not installed"
-  fi    
-done
+# for pkg in $pkgs; do
+#   if pacman -Qs $pkg > /dev/null ; then
+#     echo "$pkg installed"
+#   else
+#     echo "$pkg not installed"
+#   fi    
+# done

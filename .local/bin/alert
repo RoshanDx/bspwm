@@ -1,2 +1,2 @@
 #!/bin/sh
-paplay /home/walter/.local/share/audio/alert.wav
+paplay /home/$USER/.local/share/audio/alert.wav
