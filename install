@@ -39,18 +39,18 @@ makepkg -si --noconfirm
 echo "yay Installed"
 
 # Install Dependecies
-sudo pacman -S --noconfirm xorg-xrandr neofetch picom-git polybar rofi neovim vim bspwm sxhkd alacritty thunar zsh ranger nitrogen xsensor unzip dunst \
+sudo pacman -S --noconfirm xorg-xrandr neofetch polybar rofi neovim vim bspwm sxhkd alacritty thunar zsh ranger nitrogen xsensor unzip dunst \
  cronie xclip lightdm lightdm-slick-greeter xdg-utils xdo xdotool firefox btop htop maim lxsession lxappearance \
- intellij-idea-community-edition visual-studio-code-bin viewnior ueberzug ttf-jetbrains-mono-nerd ttf-jetbrains-mono \
- asciiquarium dbeaver geany papirus-icon-theme arc-gtk-theme pulseaudio pulseaudio-alsa pavucontrol checkupdates gvfs thunar-volman \
+ intellij-idea-community-edition viewnior ueberzug ttf-jetbrains-mono-nerd ttf-jetbrains-mono \
+ asciiquarium dbeaver geany papirus-icon-theme arc-gtk-theme pulseaudio pulseaudio-alsa pavucontrol pacman-contrib gvfs thunar-volman \
  networkmanager network-manager-applet iwd xfce4-settings xorg-input xdg-user-dirs \
  bluez bluez-utils rofi-calc libreoffice-still kitty imagemagick acpi ufw
 
 echo "Dependencies Installed"
 
 # Install Yay Dependencies
-yay -S --noconfirm ksuperkey betterlockscreen postman-bin iosevka surfn-icons-git google-chrome networkmanager-dmenu-git tumbler-extra-thumbnailers \
- bibata-cursor-theme xidlehook zscroll-git
+yay -S --noconfirm picom-git ksuperkey betterlockscreen postman-bin iosevka surfn-icons-git google-chrome networkmanager-dmenu-git tumbler-extra-thumbnailers \
+ bibata-cursor-theme xidlehook zscroll-git visual-studio-code-bin
 
 echo "Yay Dependencies Installed"
 
