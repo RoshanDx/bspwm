@@ -35,7 +35,7 @@ makepkg -si --noconfirm
 echo "yay Installed"
 
 # Install Dependecies
-sudo pacman -S --noconfirm xorg-xrandr picom-git polybar rofi neovim vim bspwm sxhkd alacritty thunar zsh ranger nitrogen xsensor unzip dunst \
+sudo pacman -S --noconfirm xorg-xrandr neofetch picom-git polybar rofi neovim vim bspwm sxhkd alacritty thunar zsh ranger nitrogen xsensor unzip dunst \
 cronie xclip lightdm lightdm-slick-greeter xdg-utils xdo xdotool firefox btop htop maim lxsession lxappearance \
 intellij-idea-community-edition visual-studio-code-bin viewnior ueberzug ttf-jetbrains-mono-nerd ttf-jetbrains-mono \
 asciiquarium dbeaver geany papirus-icon-theme arc-gtk-theme pulseaudio pulseaudio-alsa pavucontrol checkupdates gvfs thunar-volman\
@@ -177,8 +177,8 @@ echo -ne "
                     Enabling Essential Services
 -------------------------------------------------------------------------
 "
-systemctl enable --now NetworkManager
-echo "NetworkManager enabled"
+# systemctl enable --now NetworkManager
+# echo "NetworkManager enabled"
 systemctl enable --now lightdm
 echo "Lightdm enabled"
 
