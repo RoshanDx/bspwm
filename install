@@ -43,7 +43,7 @@ sudo pacman -S --noconfirm xorg xorg-init neofetch polybar rofi neovim vim bspwm
 cronie xclip lightdm lightdm-slick-greeter xdg-utils xdo xdotool firefox btop htop maim lxsession lxappearance \
 intellij-idea-community-edition viewnior ueberzug ttf-jetbrains-mono-nerd ttf-jetbrains-mono \
 asciiquarium dbeaver geany papirus-icon-theme arc-gtk-theme pulseaudio pulseaudio-alsa pavucontrol pacman-contrib gvfs thunar-volman \
-networkmanager network-manager-applet iwd xfce4-settings xorg-input xdg-user-dirs \
+networkmanager network-manager-applet iwd xfce4-settings xdg-user-dirs \
 bluez bluez-utils rofi-calc libreoffice-still kitty imagemagick acpi ufw
 
 echo "Dependencies Installed"
