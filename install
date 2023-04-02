@@ -39,7 +39,7 @@ makepkg -si --noconfirm
 echo "yay Installed"
 
 # Install Dependecies
-sudo pacman -S --noconfirm xorg xorg-init neofetch polybar rofi neovim vim bspwm sxhkd alacritty thunar zsh ranger nitrogen xsensor unzip dunst \
+sudo pacman -S --noconfirm xorg xorg-init neofetch polybar rofi neovim vim bspwm sxhkd alacritty thunar zsh ranger nitrogen xsensors unzip dunst \
 cronie xclip lightdm lightdm-slick-greeter xdg-utils xdo xdotool firefox btop htop maim lxsession lxappearance \
 intellij-idea-community-edition viewnior ueberzug ttf-jetbrains-mono-nerd ttf-jetbrains-mono \
 asciiquarium dbeaver geany papirus-icon-theme arc-gtk-theme pulseaudio pulseaudio-alsa pavucontrol pacman-contrib gvfs thunar-volman \
