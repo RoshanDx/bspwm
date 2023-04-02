@@ -13,11 +13,11 @@ super + {_,shift + }q
 	
 # Terminal tile mode
 super + Return
-	kitty	
+	alacritty	
 
 # Terminal floating mode
 super + {_,shift +}Return
-	tdrop -ma -w 40% -y 30% -x 30% kitty
+	tdrop -ma -w 40% -y 30% -x 30% alacritty
 
 # App launcher
 super + F1
@@ -139,7 +139,7 @@ super + alt + o
 
 # Ranger
 super + r
-	kitty -e ranger
+	alacritty -e ranger
 	
 # Volume Up
 XF86AudioRaiseVolume
