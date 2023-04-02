@@ -34,7 +34,7 @@ bluez bluez-utils rofi-calc libreoffice-still kitty imagemagick acpi ufw
 echo "Dependencies Installed"
 
 # Install Yay Dependencies
-yay -S --noconfirm picom-git ksuperkey betterlockscreen postman-bin iosevka surfn-icons-git google-chrome networkmanager-dmenu-git tumbler-extra-thumbnailers \
+yay -S --noconfirm picom-git ksuperkey betterlockscreen postman-bin ttf-iosevka surfn-icons-git google-chrome networkmanager-dmenu-git tumbler-extra-thumbnailers \
 bibata-cursor-theme xidlehook zscroll-git visual-studio-code-bin
 
 echo "Yay Dependencies Installed"
