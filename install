@@ -35,14 +35,13 @@ makepkg -si --noconfirm
 echo "yay Installed"
 
 # Install Dependecies
-sudo pacman -S --noconfirm picom-git polybar rofi neovim bspwm sxhkd alacritty thunar zsh ranger nitrogen xsensor unzip git dunst \
+sudo pacman -S --noconfirm picom-git polybar rofi neovim vim bspwm sxhkd alacritty thunar zsh ranger nitrogen xsensor unzip dunst \
 cronie xclip lightdm lightdm-slick-greeter xdg-utils xdo xdotool firefox btop htop maim lxsession lxappearance \
 intellij-idea-community-edition visual-studio-code-bin viewnior ueberzug ttf-jetbrains-mono-nerd ttf-jetbrains-mono \
 asciiquarium dbeaver geany papirus-icon-theme arc-gtk-theme pulseaudio pulseaudio-alsa pavucontrol checkupdates gvfs thunar-volman\
-networkmanager network-manager-applet iwd libinput xfce4-settings xf86-input-libinput xorg-input xdg-user-dirs \
+networkmanager network-manager-applet iwd xfce4-settings xorg-input xdg-user-dirs \
 bluez bluez-utils rofi-calc libreoffice-still kitty imagemagick acpi ufw
 echo "Dependencies Installed"
-
 
 # Install Yay Dependencies
 yay -S --noconfirm ksuperkey betterlockscreen postman-bin iosevka surfn-icons-git google-chrome networkmanager-dmenu-git tumbler-extra-thumbnailers \
@@ -62,12 +61,11 @@ then
     sudo mkdir /usr/share/fonts/TTF
 fi
 
-mkdir Downloads Pictures Documents Videos dev repo
+mkdir Downloads Pictures Documents Videos dev
 mkdir ~/Pictures/screenshots ~/Pictures/wallpapers
 
 # Copy User's Config
-cd ~/repo
-git clone https://github.com/RoshanDx/bspwm.git
+cd ~/repo/bspwm
 cd bspwm
 cp -r .config/* ~/.config
 cp .profile .xinitrc .Xresources .Xauthority ~/
