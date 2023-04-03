@@ -28,12 +28,12 @@ done
 echo "Dependencies Checked"
 
 # Set Lockscreen
-betterlockscreen -u ~/Pictures/wallpapers/samurai.jpg
+betterlockscreen -u /home/$USER/Pictures/wallpapers/samurai.jpg
 echo "Lockscreen Set"
 
 # Copy And Set Wallpaper
-cp -r wallpaper/. ~/Pictures/wallpapers/
-nitrogen --set-scaled ~/Pictures/wallpaper/samurai.jpg
+cp -r wallpaper/. /home/$USER/Pictures/wallpapers/
+nitrogen --set-scaled /home/$USER/Pictures/wallpaper/samurai.jpg
 echo "Wallpaper Set"
 
 echo -ne "
@@ -41,7 +41,7 @@ echo -ne "
                     Setup Login Manager
 -------------------------------------------------------------------------
 "
-sudo pacman -S --noconfirm lightdm-slick-greeter 
+sudo pacman -S --noconfirm lightdm-slick-greeter
 echo "LightDM Slick Greeter Installed"
 sudo cp -r ~/repo/bspwm/displaymanager/* /etc/
 echo "LightDM Config Copied"
