@@ -90,9 +90,17 @@ fi
 
 echo "User's Script Copied"
 
+#Set Btop Theme
+btoptheme='color_theme = "/home/'$USER'/.config/btop/themes/tokyo-night.theme"'
+sed -i "s@color_theme.*@$btoptheme@" ~/.config/btop/btop.conf
+echo "Btop Theme Set"
+
 #Copy Fonts
 sudo cp -r fonts/. /usr/share/fonts/
 echo "Fonts Copied"
+
+#Remove default theme
+sudo rm /usr/share/icons/default/index.theme
 
 # Laptop config
 if [[ $SYSTEM = "laptop" ]]; then
