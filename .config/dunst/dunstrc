@@ -159,7 +159,7 @@ class = Dunst
 icon_position = left
 max_icon_size = 48
 
-#icon_path = /home/walter/.local/share/icons/dunst
+#icon_path = ~/.local/bin/alert
 
 frame_width = 0
 
