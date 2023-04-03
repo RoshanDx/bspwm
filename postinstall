@@ -38,7 +38,7 @@ echo "Wallpaper Set"
 
 echo -ne "
 -------------------------------------------------------------------------
-                    Setup Login Manager
+                    Apply Login Manager Theme
 -------------------------------------------------------------------------
 "
 sudo pacman -S --noconfirm lightdm-slick-greeter
