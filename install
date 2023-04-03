@@ -200,7 +200,6 @@ echo -ne "
 
 sudo pacman -S --noconfirm lightdm lightdm-gtk-greeter
 echo "LightDM Installed"
-echo "LightDM Config Copied"
 sudo systemctl enable lightdm
 echo "LightDM enabled"
 
