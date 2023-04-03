@@ -198,10 +198,8 @@ echo -ne "
 -------------------------------------------------------------------------
 "
 
-sudo pacman -S --noconfirm lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings lightdm-slick-greeter
+sudo pacman -S --noconfirm lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings
 echo "LightDM Installed"
-cd ~/repo/bspwm/displaymanager/lightdm/
-sudo cp lightdm.conf slick-greeter.conf /etc/lightdm/
 sudo systemctl enable lightdm
 echo "LightDM enabled"
 
