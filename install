@@ -38,7 +38,7 @@ makepkg -si --noconfirm
 
 echo "yay Installed"
 
-pkgs='xorg xorg-xinit neofetch polybar rofi neovim vim bspwm sxhkd alacritty thunar zsh ranger nitrogen xsensors unzip dunst 
+pkgs='xorg xorg-xinit neofetch feh polybar rofi neovim vim bspwm sxhkd alacritty thunar zsh ranger nitrogen xsensors unzip dunst 
 cronie xclip xdg-utils xdo xdotool firefox btop htop maim lxsession lxappearance 
 intellij-idea-community-edition viewnior ueberzug ttf-jetbrains-mono-nerd ttf-jetbrains-mono 
 asciiquarium dbeaver geany papirus-icon-theme arc-gtk-theme pulseaudio pulseaudio-alsa pavucontrol pacman-contrib gvfs thunar-volman 
@@ -202,6 +202,12 @@ sudo pacman -S --noconfirm lightdm lightdm-gtk-greeter lightdm-gtk-greeter-setti
 echo "LightDM Installed"
 sudo systemctl enable lightdm
 echo "LightDM enabled"
+
+sudo pacman -S --noconfirm lightdm-slick-greeter
+echo "LightDM Slick Greeter Installed"
+sudo sed -i "s/#greeter-session=.*/greeter-session=lightdm-slick-greeter/g" lightdm.conf
+echo "[Greeter]
+background=/usr/share/backgrounds/samurai.jpg" | sudo tee /etc/lightdm/slick-greeter.conf
 
 echo -ne "
 -------------------------------------------------------------------------

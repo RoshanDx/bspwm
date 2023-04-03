@@ -70,6 +70,7 @@ sxhkd -c $HOME/.config/sxhkd/sxhkdrc &
 ksuperkey -e 'Super_L=Super_L|F1' &
 ksuperkey -e 'Super_R=Super_L|F1' &
 
+feh --bg-scale ~/Pictures/wallpapers/samurai.jpg
 lxsession &
 picom --legacy-backends &
 nitrogen --restore &
