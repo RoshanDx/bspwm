@@ -216,7 +216,7 @@ format = "<span font_desc='JetBrainsMono Medium Nerd Font'>%b</span>"
 
 [play_sound]
 summary = "*"
-script = /home/walter/.local/bin/alert
+script = /home/$USER/.local/bin/alert
 
 
 # Every section that isn't one of the above is interpreted as a rules to
