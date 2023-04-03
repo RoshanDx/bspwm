@@ -10,9 +10,6 @@ echo -ne "
 sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
-# Update Arch
-sudo pacman -S archlinux-keyring --noconfirm
-sudo pacman -Syu --noconfirm
 
 pkgs='xorg xorg-xinit neofetch polybar rofi neovim vim bspwm sxhkd alacritty thunar zsh ranger nitrogen xsensors unzip dunst 
 cronie xclip lightdm lightdm-slick-greeter xdg-utils xdo xdotool firefox btop htop maim lxsession lxappearance 
@@ -28,7 +25,34 @@ for pkg in $pkgs; do
   fi    
 done
 
-# Install Dependecies
-#sudo pacman -S --noconfirm $pkgs
-echo "Dependencies Installed"
+echo "Dependencies Checked"
+
+# Set Lockscreen
+betterlockscreen -u ~/Pictures/wallpapers/samurai.jpg
+echo "Lockscreen Set"
+
+# Copy And Set Wallpaper
+cp -r wallpaper/. ~/Pictures/wallpapers/
+nitrogen --set-scaled ~/Pictures/wallpaper/samurai.jpg
+echo "Wallpaper Set"
+
+echo -ne "
+-------------------------------------------------------------------------
+                    Setup Login Manager
+-------------------------------------------------------------------------
+"
+sudo pacman -S --noconfirm lightdm lightdm-gtk-greeter lightdm-slick-greeter 
+echo "LightDM Installed"
+sudo cp -r ~/repo/bspwm/displaymanager/* /etc/
+echo "LightDM Config Copied"
+sudo systemctl enable lightdm
+echo "LightDM enabled"
+
+echo -ne "
+-------------------------------------------------------------------------
+                    Installation Complete, Please Reboot
+-------------------------------------------------------------------------
+"
+
+
 

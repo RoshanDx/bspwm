@@ -90,11 +90,6 @@ fi
 
 echo "User's Script Copied"
 
-# Copy And Set Wallpaper
-cp -r wallpaper/. ~/Pictures/wallpapers/
-nitrogen --set-scaled ~/Pictures/wallpaper/samurai.jpg
-echo "Wallpaper Set"
-
 #Copy Fonts
 sudo cp -r fonts/. /usr/share/fonts/
 echo "Fonts Copied"
@@ -111,14 +106,6 @@ if [[ $SYSTEM = "laptop" ]]; then
     echo "Udev rules Copied"
 fi	
 
-
-# Set Display Manager Settings
-sudo cp -r displaymanager/. /etc
-echo "Display Manager Settings Copied"
-
-# Set Lockscreen
-betterlockscreen -u ~/Pictures/wallpapers/samurai.jpg
-echo "Lockscreen Set"
 
 echo -ne "
 
@@ -211,7 +198,7 @@ echo -ne "
 -------------------------------------------------------------------------
 "
 
-sudo pacman -S lightdm lightdm-slick-greeter
+sudo pacman -S --noconfirm lightdm lightdm-slick-greeter
 echo "LightDM Installed"
 sudo cp -r ~/repo/bspwm/displaymanager/* /etc/
 echo "LightDM Config Copied"
@@ -221,14 +208,6 @@ echo "LightDM enabled"
 
 echo -ne "
 -------------------------------------------------------------------------
-                    Installation Complete, Rebooting ...
+                    Installation Complete, Please Reboot
 -------------------------------------------------------------------------
 "
-
-# for pkg in $pkgs; do
-#   if pacman -Qs $pkg > /dev/null ; then
-#     echo "$pkg installed"
-#   else
-#     echo "$pkg not installed"
-#   fi    
-# done
