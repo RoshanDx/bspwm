@@ -215,12 +215,6 @@ echo "LightDM Installed"
 sudo systemctl enable lightdm
 echo "LightDM enabled"
 
-sudo pacman -S --noconfirm lightdm-slick-greeter
-echo "LightDM Slick Greeter Installed"
-sudo sed -i "s/#greeter-session=.*/greeter-session=lightdm-slick-greeter/g" /etc/lightdm/lightdm.conf
-echo "[Greeter]
-background=/usr/share/backgrounds/samurai.jpg" | sudo tee /etc/lightdm/slick-greeter.conf
-
 echo -ne "
 -------------------------------------------------------------------------
                     Installation Complete, Please Reboot
