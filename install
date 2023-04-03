@@ -39,7 +39,7 @@ makepkg -si --noconfirm
 echo "yay Installed"
 
 pkgs='xorg xorg-xinit neofetch feh polybar rofi neovim vim bspwm sxhkd alacritty thunar zsh ranger nitrogen xsensors unzip dunst 
-cronie xclip xdg-utils xdo xdotool firefox btop htop maim lxsession lxappearance 
+cronie xclip xdg-utils xdo xdotool firefox btop htop maim lxsession lxappearance tumbler 
 intellij-idea-community-edition viewnior ueberzug ttf-jetbrains-mono-nerd ttf-jetbrains-mono 
 asciiquarium dbeaver geany papirus-icon-theme arc-gtk-theme pulseaudio pulseaudio-alsa pavucontrol pacman-contrib gvfs thunar-volman 
 networkmanager network-manager-applet iwd xfce4-settings xdg-user-dirs bluez bluez-utils rofi-calc libreoffice-still kitty imagemagick acpi ufw'
