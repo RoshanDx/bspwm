@@ -41,16 +41,15 @@ echo -ne "
                     Setup Login Manager
 -------------------------------------------------------------------------
 "
-sudo pacman -S --noconfirm lightdm lightdm-gtk-greeter lightdm-slick-greeter 
-echo "LightDM Installed"
+sudo pacman -S --noconfirm lightdm-slick-greeter 
+echo "LightDM Slick Greeter Installed"
 sudo cp -r ~/repo/bspwm/displaymanager/* /etc/
 echo "LightDM Config Copied"
-sudo systemctl enable lightdm
 echo "LightDM enabled"
 
 echo -ne "
 -------------------------------------------------------------------------
-                    Installation Complete, Please Reboot
+                    Installation Complete
 -------------------------------------------------------------------------
 "
 
