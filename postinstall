@@ -45,7 +45,6 @@ sudo pacman -S --noconfirm lightdm-slick-greeter
 echo "LightDM Slick Greeter Installed"
 sudo cp -r ~/repo/bspwm/displaymanager/* /etc/
 echo "LightDM Config Copied"
-echo "LightDM enabled"
 
 echo -ne "
 -------------------------------------------------------------------------
