@@ -30,12 +30,15 @@ echo "Dependencies Checked"
 sudo pacman -S --noconfirm lightdm-slick-greeter
 echo "LightDM Slick Greeter Installed"
 sudo sed -i "s/#greeter-session=.*/greeter-session=lightdm-slick-greeter/g" /etc/lightdm/lightdm.conf
+MONITOR=xrandr | grep " connected " | awk '{ print$1 }'
+sudo sed -i "s/#display-setup-script=.*/display-setup-script=xrandr --output $MONITOR --mode 3840x2160/g" /etc/lightdm/lightdm.conf
 echo "[Greeter]
 background=/usr/share/backgrounds/samurai.jpg" | sudo tee /etc/lightdm/slick-greeter.conf
+echo "LightDM Setting Configured"
 
 # Set Lockscreen
 betterlockscreen -u /home/$USER/Pictures/wallpapers/samurai.jpg
-echo "Lockscreen Set"
+echo "BetterLockscreen Set"
 
 echo -ne "
 -------------------------------------------------------------------------

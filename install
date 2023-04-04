@@ -173,7 +173,7 @@ echo -ne "
                     Enabling Essential Services
 -------------------------------------------------------------------------
 "
-systemctl enable NetworkManager
+sudo systemctl enable NetworkManager
 echo "NetworkManager enabled"
 
 echo -ne "
@@ -202,8 +202,7 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
 cd ~
 sudo ln ~/.config/zsh/.zshrc .zshrc
 sudo chsh -s /bin/zsh
-chsh -s /bin/zsh
-
+sudo chsh -s /bin/zsh $USER
 echo -ne "
 -------------------------------------------------------------------------
                     Setup Login Manager
