@@ -2,7 +2,7 @@ configuration {
     show-icons:                     true;
     icon-theme: 		    "Papirus";
     display-drun: 		    "";
-    display-window: 		    " 﩯";
+    display-window: 		    "";
     display-run: 		    " ";
     drun-display-format:            "{name}";
     disable-history:                false;

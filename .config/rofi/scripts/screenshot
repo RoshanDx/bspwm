@@ -8,7 +8,7 @@ output="/home/${USER}/Pictures/screenshots/'$(date +%Y-%m-%d-%T)'-screenshot.png
 
 # options to be displayed
 option0="  Screen"
-option1="  Area"
+option1="󰲎  Area"
 option2="  Window"
 option3="  Screen delay 5s"
 option4="  Window delay 5s"
