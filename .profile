@@ -3,10 +3,11 @@ export EDITOR=nvim
 export TERMINAL="kitty"
 export BROWSER="firefox"
 
-export SSH_AUTH_SOCK=~/.1password/agent.sock
+#export SSH_AUTH_SOCK=~/.1password/agent.sock
 
 # custom scripts
 export CUSTOM=$PATH:~/.local/bin
+
 
 export GRADLE_HOME=/opt/gradle/gradle-8.1
 export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
