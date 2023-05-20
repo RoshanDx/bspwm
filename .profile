@@ -7,6 +7,7 @@ export SSH_AUTH_SOCK=~/.1password/agent.sock
 
 # custom scripts
 export CUSTOM=$PATH:~/.local/bin
+
 export GRADLE_HOME=/opt/gradle/gradle-8.1
 export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
 #export JAVA_HOME=/opt/graalvm-ce-java17-22.3.2
