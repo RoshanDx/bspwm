@@ -2,8 +2,6 @@ export EDITOR=nvim
 export TERMINAL="kitty"
 export BROWSER="firefox"
 
-#export SSH_AUTH_SOCK=~/.1password/agent.sock
-
 # custom scripts
 export CUSTOM=$PATH:~/.local/bin
 
