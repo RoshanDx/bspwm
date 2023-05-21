@@ -1,4 +1,3 @@
-DIR="$PWD"
 export EDITOR=nvim
 export TERMINAL="kitty"
 export BROWSER="firefox"
