@@ -1,4 +1,4 @@
-export EDITOR=nvim
+export EDITOR="nvim"
 export TERMINAL="kitty"
 export BROWSER="firefox"
 
