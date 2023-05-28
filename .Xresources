@@ -1,2 +1,5 @@
+Xft.dpi: 96
+Xft.hintstyle: hintmedium
+Xft.hinting: true
 Xcursor.theme: Bibata-Modern-Ice
 Xcursor.size: 15

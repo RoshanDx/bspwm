@@ -13,14 +13,14 @@ super + {_,shift + }q
 	
 # Terminal tile mode
 super + Return
-	alacritty	
+	$TERMINAL
 
 # Terminal floating mode
 super + {_,shift +}Return
-	tdrop -ma -w 40% -y 30% -x 30% alacritty
+	tdrop -ma -w 40% -y 30% -x 30% $TERMINAL
 
 # App launcher
-super + F1
+super + space
 	sh ~/.config/rofi/scripts/{app_menu}
 
 # Alternate between tiled and monocle
@@ -36,7 +36,7 @@ super + shift + {d,a}
     bspc node @/ -C {forward,backward}
     
 # Toggle beetwen floating & tiled
-super + space
+super + t
     bspc node -t "~"{floating,tiled}
 
 # Send the newest marked node to the newest preselected node
@@ -48,8 +48,8 @@ super + g
 	bspc node -s biggest.local
 
 # Set the window state
-super + {t,shift + t,s,f}
-	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+super + {shift + t,s,f}
+	bspc node -t {pseudo_tiled,floating,fullscreen}
 
 # Set the node flags
 super + ctrl + {m,x,y,z}
