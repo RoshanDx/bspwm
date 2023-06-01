@@ -1,7 +1,7 @@
 
 # Reload sxhkd
 super + Escape
-	pkill -usr1 -x sxhkd; notify-send 'SXHKD' 'Config Reloaded!'
+	pkill -usr1 -x sxhkd; notify-send 'Keymap' 'Config Reloaded!'
 
 # Quit/Restart bspwm
 super + alt + {q,r}
@@ -113,25 +113,13 @@ super + alt + shift + {h,j,k,l}
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
-# Open file manager
-super + e
-	tdrop -ma -w 40% -y 30% -x 30% -n thunar --class=thunar thunar
-
 # Lockscreen
 ctrl + alt + l
     betterlockscreen --lock
 
 # Rofi Menus/Applets
-super + {w,x,n}
-	sh ~/.config/rofi/scripts/{window_menu,power_menu,networkmanager_dmenu}
-
-# Rofi CheatSheet
-super + slash
-	sh ~/.config/rofi/scripts/{cheatsheet}
-
-# Screenshot
-Print
-    sh ~/.config/rofi/scripts/{screenshot}
+super + {c,w,x,n,Print,slash}
+	sh ~/.config/rofi/scripts/{calculator,window_menu,power_menu,networkmanager_dmenu,screenshot,cheatsheet}
 
 # Toggle picom
 super + alt + o
@@ -168,10 +156,6 @@ super + shift + p
 # Thunar
 super + shift + e
 	tdrop -ma -w 40% -y 30% -x 30% -n thunar --class=thunar thunar
-	
-# Calculator
-super + shift + c
-	sh ~/.config/rofi/scripts/{calculator}
 
 # Reset Layout
 super + F4
