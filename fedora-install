@@ -58,16 +58,16 @@ sudo dnf install -y snapd
 sudo ln -s /var/lib/snapd/snap /snap
 
 # Intellij 
-sudo snap install -y intellij-idea-community --classic
+sudo snap install intellij-idea-community --classic
 
 # VSCode
-sudo snap install -y code --classic
+sudo snap install code --classic
 
 # Postman
-sudo snap install -y postman
+sudo snap install postman
 
 # Dbeaver-ce
-sudo snap install -y dbeaver-ce
+sudo snap install dbeaver-ce
 
 # Bibata Cursor
 sudo dnf copr -y enable peterwu/rendezvous
@@ -78,7 +78,7 @@ sudo dnf install -y meson pulseaudio-libs-devel cxxopts
 git clone https://github.com/cdemoulins/pamixer.git
 cd pamixer
 meson setup build
-meson compile -C build
+sudo meson compile -C build
 cd ..
 
 #Tdrop
