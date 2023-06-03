@@ -129,7 +129,6 @@ echo -ne "
 -------------------------------------------------------------------------
 "
 
-### Check if a directory does not exist ###
 if [ ! -d "/usr/share/fonts/TTF" ] 
 then
     echo "Directory /usr/share/fonts/TTF DOES NOT exists. Creating a new one" 
@@ -212,10 +211,7 @@ echo -ne "
 
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.config/powerlevel10k
 
-
-cd ~/.config
-mkdir zsh zsh/plugins
-cd zsh/plugins/
+cd ~/.config/zsh/plugins
 git clone https://github.com/MichaelAquilina/zsh-you-should-use.git
 git clone https://github.com/zsh-users/zsh-autosuggestions.git
 git clone https://github.com/zsh-users/zsh-history-substring-search.git
