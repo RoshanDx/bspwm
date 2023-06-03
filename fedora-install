@@ -29,7 +29,7 @@ while true; do sudo -n true; sleep 300; kill -0 "$$" || exit; done 2>/dev/null &
 echo -e "max_parallel_downloads=10\nfastestmirror=True" | sudo tee -a /etc/dnf/dnf.conf
 
 # Fedora Update
-sudo dnf update
+sudo dnf update -y
 
 # Enable RPM Fusion Repository
 sudo dnf install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
