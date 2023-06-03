@@ -138,11 +138,10 @@ fi
 cd ~
 mkdir Downloads Pictures Documents Videos dev
 mkdir ~/Pictures/screenshots ~/Pictures/wallpapers
-sudo mkdir /usr/share/backgrounds
 
 # Copy User's Config
 cd ~/repo/bspwm
-cp -r .config/* ~/.config
+cp -r .config ~
 cp .profile .xinitrc .Xresources ~/
 sudo cp wallpaper/samurai.jpg /usr/share/backgrounds/
 echo "Config folder copied"
