@@ -1,0 +1,231 @@
+#!/bin/bash
+
+SYSTEM=
+
+if [[ $# -eq 0 || $# -gt 1 ]] ; then
+    echo "Unable to run install script, please run with for example 'install desktop/laptop'"
+    exit 1
+else
+	if [[ $1 = "laptop" ]]; then
+		SYSTEM="laptop"
+	else 
+		SYSTEM="dekstop"
+	fi	
+fi
+
+echo "Installing based on system: $SYSTEM"
+
+echo -ne "
+-------------------------------------------------------------------------
+                    Main Packages
+-------------------------------------------------------------------------
+"
+
+## GET SU PRIVILEGES
+sudo -v
+while true; do sudo -n true; sleep 300; kill -0 "$$" || exit; done 2>/dev/null &
+
+# Configure DNF for Faster Downloads of Packages
+echo -e "max_parallel_downloads=10\nfastestmirror=True" | sudo tee -a /etc/dnf/dnf.conf
+
+# Fedora Update
+sudo dnf update
+
+# Enable RPM Fusion Repository
+sudo dnf install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+sudo dnf install -y https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+echo "RPM Fusion Repository enabled"
+
+pkgs='@base-x neofetch feh polybar rofi neovim vim bspwm sxhkd picom alacritty thunar zsh ranger nitrogen pavucontrol
+xsensors unzip dunst cronie xclip xdg-utils xdotool firefox btop htop maim viewnior asciiquarium geany papirus-icon-theme 
+arc-theme gvfs thunar-volman network-manager-applet iwd xdg-user-dirs bluez bluez-tools kitty ImageMagick 
+acpi ufw thunar-archive-plugin docker docker-compose xsetroot xautolock lxpolkit lxappearance xmodmap util-linux-user'
+
+# Install Dependecies
+sudo dnf install -y $pkgs
+sudo dnf install -y make automake gcc gcc-c++ kernel-devel
+echo "Packages Installed"
+
+echo -ne "
+-------------------------------------------------------------------------
+                    3rd Packages
+-------------------------------------------------------------------------
+"
+cd ~/repo
+
+# Snap 
+sudo dnf install -y snapd
+sudo ln -s /var/lib/snapd/snap /snap
+
+# Intellij 
+sudo snap install -y intellij-idea-community --classic
+
+# VSCode
+sudo snap install -y code --classic
+
+# Postman
+sudo snap install -y postman
+
+# Dbeaver-ce
+sudo snap install -y dbeaver-ce
+
+# Bibata Cursor
+sudo dnf copr -y enable peterwu/rendezvous
+sudo dnf install -y bibata-cursor-themes
+
+# Pamixer
+sudo dnf install -y meson pulseaudio-libs-devel cxxopts
+git clone https://github.com/cdemoulins/pamixer.git
+meson setup build
+meson compile -C build
+cd ..
+
+#Tdrop
+git clone https://github.com/noctuid/tdrop.git
+cd tdrop
+sudo make install
+cd ..
+
+# Password Manager (1Password)
+sudo rpm --import https://downloads.1password.com/linux/keys/1password.asc
+sudo sh -c 'echo -e "[1password]\nname=1Password Stable Channel\nbaseurl=https://downloads.1password.com/linux/rpm/stable/\$basearch\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=\"https://downloads.1password.com/linux/keys/1password.asc\"" > /etc/yum.repos.d/1password.repo'
+sudo dnf install -y 1password
+
+# Zscroll
+git clone https://github.com/noctuid/zscroll
+cd zscroll
+sudo python3 setup.py install
+cd..
+
+if [[ $SYSTEM = "laptop" ]]; then
+    # Brillo
+    git clone https://github.com/CameronNemo/brillo.git
+    cd brillo
+    sudo make install.setgid
+    echo "Brillo Installed"
+    cd ..
+
+    # Nbfc-linux    
+    git clone https://github.com/nbfc-linux/nbfc-linux.git
+    cd nbfc-linux
+    sudo make install
+    echo "Nbfc-linux Installed"
+    cd ..
+
+    # Auto-Cpufreq
+    git clone https://github.com/AdnanHodzic/auto-cpufreq.git
+    cd auto-cpufreq && sudo ./auto-cpufreq-installer
+    sudo auto-cpufreq --install
+    echo "Auto-Cpufreq Installed"
+    cd ..
+
+fi
+
+
+echo -ne "
+-------------------------------------------------------------------------
+                     Set Config
+-------------------------------------------------------------------------
+"
+
+### Check if a directory does not exist ###
+if [ ! -d "/usr/share/fonts/TTF" ] 
+then
+    echo "Directory /usr/share/fonts/TTF DOES NOT exists. Creating a new one" 
+    sudo mkdir /usr/share/fonts/TTF
+fi
+
+cd ~
+mkdir Downloads Pictures Documents Videos dev
+mkdir ~/Pictures/screenshots ~/Pictures/wallpapers
+sudo mkdir /usr/share/backgrounds
+
+# Copy User's Config
+cd ~/repo/bspwm
+cp -r .config/* ~/.config
+cp .profile .xinitrc .Xresources ~/
+sudo cp wallpaper/samurai.jpg /usr/share/backgrounds/
+echo "Config folder copied"
+
+#Copy User's Script
+cp -r .local ~/
+
+if [[ $SYSTEM = "desktop" ]]; then
+    cd ~/.local/bin
+    rm -rf changebrightness chargingnotify batterynotify
+    cd ~/repo/bspwm
+fi
+
+echo "User's Script Copied"
+
+#Set Btop Theme
+btoptheme='color_theme = "/home/'$USER'/.config/btop/themes/tokyo-night.theme"'
+sed -i "s@color_theme.*@$btoptheme@" ~/.config/btop/btop.conf
+echo "Btop Theme Set"
+
+#Copy Fonts
+sudo cp -r fonts/. /usr/share/fonts/
+echo "Fonts Copied"
+
+# Copy Wallpaper
+cp -r wallpaper/. /home/$USER/Pictures/wallpapers/
+echo "Wallpaper Copied"
+
+#Remove default theme
+sudo rm /usr/share/icons/default/index.theme
+
+# Laptop config
+if [[ $SYSTEM = "laptop" ]]; then
+
+    #Set Cronjob
+	lines="*/5 * * * * /home/$USER/.local/bin/batterynotify"
+    echo "$lines" | sudo crontab -u $USER
+
+    # Set Udev Rules
+    sudo cp bspwm/udev-rules/* /etc/udev/rules.d/
+    echo "Udev rules Copied"
+fi	
+
+
+echo -ne "
+-------------------------------------------------------------------------
+                    Setup Firewall Rules
+-------------------------------------------------------------------------
+"
+
+sudo ufw limit 22/tcp
+sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp
+sudo ufw allow 1443/tcp
+sudo ufw allow 8081/tcp
+sudo ufw allow 3306/tcp
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+sudo ufw enable
+
+echo -ne "
+-------------------------------------------------------------------------
+                    Setup Zsh
+-------------------------------------------------------------------------
+"
+
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.config/powerlevel10k
+
+
+cd ~/.config
+mkdir zsh zsh/plugins
+cd zsh/plugins/
+git clone https://github.com/MichaelAquilina/zsh-you-should-use.git
+git clone https://github.com/zsh-users/zsh-autosuggestions.git
+git clone https://github.com/zsh-users/zsh-history-substring-search.git
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+cd ~
+sudo ln ~/.config/zsh/.zshrc .zshrc
+sudo chsh -s /bin/zsh
+sudo chsh -s /bin/zsh $USER
+
+echo -ne "
+-------------------------------------------------------------------------
+                    Installation Complete, Please Reboot
+-------------------------------------------------------------------------
+"
