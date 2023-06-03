@@ -76,6 +76,7 @@ sudo dnf install -y bibata-cursor-themes
 # Pamixer
 sudo dnf install -y meson pulseaudio-libs-devel cxxopts
 git clone https://github.com/cdemoulins/pamixer.git
+cd pamixer
 meson setup build
 meson compile -C build
 cd ..
