@@ -77,7 +77,8 @@ picom --legacy-backends &
 nitrogen --restore &
 xsetroot -cursor_name left_ptr &
 sh $HOME/.config/dunst/dunst
-#pgrep bspswallow || bspswallow &
 autolock &
-#xfsettingsd &
+lxpolkit &
 (sleep 1; xmodmap $HOME/.Xmodmap 2>/tmp/xmodmap.errors) &
+#pgrep bspswallow || bspswallow &
+#xfsettingsd &
