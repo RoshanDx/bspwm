@@ -39,7 +39,7 @@ echo "RPM Fusion Repository enabled"
 pkgs='@base-x neofetch feh polybar rofi neovim vim bspwm sxhkd picom alacritty thunar zsh ranger nitrogen pavucontrol
 xsensors unzip dunst cronie xclip xdg-utils xdotool firefox btop htop maim viewnior asciiquarium geany papirus-icon-theme 
 arc-theme gvfs thunar-volman network-manager-applet iwd xdg-user-dirs bluez bluez-tools kitty ImageMagick 
-acpi ufw thunar-archive-plugin docker docker-compose xsetroot xautolock lxpolkit lxappearance xmodmap util-linux-user'
+acpi ufw thunar-archive-plugin docker docker-compose xsetroot xautolock lxpolkit lxappearance xmodmap util-linux-user wget'
 
 # Install Dependecies
 sudo dnf install -y $pkgs
@@ -100,11 +100,15 @@ sudo python3 setup.py install
 cd ..
 
 #Betterlockscreen
-git clone https://github.com/betterlockscreen/betterlockscreen.git
-cd betterlockscreen
 sudo dnf -y copr enable tokariew/i3lock-color
 sudo dnf -y install i3lock-color xset bc
-sudo ./install.sh user latest true
+wget https://github.com/betterlockscreen/betterlockscreen/archive/refs/heads/main.zip
+unzip main.zip
+cd betterlockscreen-main/
+chmod u+x betterlockscreen
+sudo cp betterlockscreen /usr/local/bin/
+sudo cp system/betterlockscreen@.service /usr/lib/systemd/system/
+sudo systemctl enable betterlockscreen@$USER
 cd ..
 
 if [[ $SYSTEM = "laptop" ]]; then
