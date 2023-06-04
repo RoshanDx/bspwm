@@ -204,6 +204,7 @@ cd ~
 sudo ln ~/.config/zsh/.zshrc .zshrc
 sudo chsh -s /bin/zsh
 sudo chsh -s /bin/zsh $USER
+
 echo -ne "
 -------------------------------------------------------------------------
                     Setup Login Manager

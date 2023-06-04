@@ -19,10 +19,6 @@ super + Return
 super + {_,shift +}Return
 	tdrop -ma -w 40% -y 30% -x 30% $TERMINAL
 
-# App launcher
-super + space
-	sh ~/.config/rofi/scripts/{app_menu}
-
 # Alternate between tiled and monocle
 super + m
 	bspc desktop -l next
@@ -118,8 +114,8 @@ ctrl + alt + l
     betterlockscreen --lock
 
 # Rofi Menus/Applets
-super + {c,w,x,n,Print,slash}
-	sh ~/.config/rofi/scripts/{calculator,window_menu,power_menu,networkmanager_dmenu,screenshot,cheatsheet}
+super + {space,c,w,x,n,Print,slash}
+	sh ~/.config/rofi/scripts/{{app_menu,calculator,window_menu,power_menu,networkmanager_dmenu,screenshot,cheatsheet}
 
 # Toggle picom
 super + alt + o
@@ -154,17 +150,17 @@ super + shift + p
 	tdrop -ma -w 40% -y 30% -x 30% -n Pavucontrol --class=Pavucontrol pavucontrol
 	
 # Thunar
-super + shift + e
+super + e
 	tdrop -ma -w 40% -y 30% -x 30% -n thunar --class=thunar thunar
 
 # Reset Layout
-super + F4
-	bsp-layout set tiled && bsp-layout remove && notify-send -u normal -t 2000 'Layout Reset'
+#super + F4
+#	bsp-layout set tiled && bsp-layout remove && notify-send -u normal -t 2000 'Layout Reset'
 
 # Set Master Layout
-super + F5
-	bsp-layout set tall && notify-send -u normal -t 2000 'Layout: Master'
+#super + F5
+#	bsp-layout set tall && notify-send -u normal -t 2000 'Layout: Master'
 
 # Set Wide Layout
-super + F6
-	bsp-layout set wide && notify-send -u normal -t 2000 'Layout: Wide'
+#super + F6
+#	bsp-layout set wide && notify-send -u normal -t 2000 'Layout: Wide'

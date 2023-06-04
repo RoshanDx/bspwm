@@ -1,0 +1,46 @@
+#!/bin/bash
+
+echo -ne "
+-------------------------------------------------------------------------
+                    Install Dependencies
+-------------------------------------------------------------------------
+"
+
+## GET SU PRIVILEGES
+sudo -v
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
+
+pkgs='@base-x neofetch feh polybar rofi neovim vim bspwm sxhkd picom alacritty thunar zsh ranger nitrogen pavucontrol
+xsensors unzip dunst cronie xclip xdg-utils xdotool firefox btop htop maim viewnior asciiquarium geany papirus-icon-theme 
+arc-theme gvfs thunar-volman network-manager-applet iwd xdg-user-dirs bluez bluez-tools kitty ImageMagick 
+acpi ufw thunar-archive-plugin docker docker-compose xsetroot xautolock lxpolkit lxappearance xmodmap util-linux-user'
+
+for pkg in $pkgs; do
+  if rpm -qa $pkg > /dev/null ; then
+    echo "$pkg installed"
+  else
+    echo "$pkg not installed"
+  fi    
+done
+
+echo "Dependencies Checked"
+
+sudo pacman -S --noconfirm lightdm-slick-greeter
+echo "LightDM Slick Greeter Installed"
+sudo sed -i "s/#greeter-session=.*/greeter-session=slick-greeter/g" /etc/lightdm/lightdm.conf
+MONITOR=$(xrandr | grep " connected " | awk '{ print$1 }')
+sudo sed -i "s/#display-setup-script=.*/display-setup-script=xrandr --output $MONITOR --mode 3840x2160/g" /etc/lightdm/lightdm.conf
+echo "[Greeter]
+background=/usr/share/backgrounds/samurai.jpg" | sudo tee /etc/lightdm/slick-greeter.conf
+echo "LightDM Setting Configured"
+
+# Set Lockscreen
+betterlockscreen -u /home/$USER/Pictures/wallpapers/samurai.jpg
+echo "BetterLockscreen Set"
+
+echo -ne "
+-------------------------------------------------------------------------
+                    Installation Complete
+-------------------------------------------------------------------------
+"

@@ -98,6 +98,14 @@ cd zscroll
 sudo python3 setup.py install
 cd ..
 
+#Betterlockscreen
+git clone https://github.com/betterlockscreen/betterlockscreen.git
+cd betterlockscreen
+sudo dnf -y copr enable tokariew/i3lock-color
+sudo dnf -y install i3lock-color xset bc
+sudo ./install.sh user latest true
+cd ..
+
 if [[ $SYSTEM = "laptop" ]]; then
     # Brillo
     git clone https://github.com/CameronNemo/brillo.git
@@ -142,7 +150,7 @@ mkdir ~/Pictures/screenshots ~/Pictures/wallpapers
 # Copy User's Config
 cd ~/repo/bspwm
 cp -r .config ~
-cp .profile .xinitrc .Xresources ~/
+cp .profile .xinitrc .Xresources .Xmodmap ~/
 sudo cp wallpaper/samurai.jpg /usr/share/backgrounds/
 echo "Config folder copied"
 
@@ -208,6 +216,7 @@ echo -ne "
 -------------------------------------------------------------------------
 "
 
+# Get powerlevel10k theme for zsh
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.config/powerlevel10k
 
 cd ~/.config/zsh/plugins
@@ -219,6 +228,20 @@ cd ~
 sudo ln ~/.config/zsh/.zshrc .zshrc
 sudo chsh -s /bin/zsh
 sudo chsh -s /bin/zsh $USER
+
+echo -ne "
+-------------------------------------------------------------------------
+                    Setup Login Manager
+-------------------------------------------------------------------------
+"
+
+sudo dnf install -y lightdm lightdm-slick-greeter
+sudo sed -i "s/#greeter-session=.*/greeter-session=slick-greeter/g" /etc/lightdm/lightdm.conf
+echo "[Greeter]
+background=/usr/share/backgrounds/samurai.jpg" | sudo tee /etc/lightdm/slick-greeter.conf
+sudo systemctl enable lightdm
+echo "LightDM enabled"
+
 
 echo -ne "
 -------------------------------------------------------------------------
