@@ -250,3 +250,4 @@ echo -ne "
                     Installation Complete, Please Reboot
 -------------------------------------------------------------------------
 "
+sudo reboot now
