@@ -79,6 +79,7 @@ git clone https://github.com/cdemoulins/pamixer.git
 cd pamixer
 meson setup build
 sudo meson compile -C build
+sudo meson install -C build
 cd ..
 
 #Tdrop
