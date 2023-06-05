@@ -7,4 +7,5 @@ if [[ `pidof dunst` ]]; then
 	pkill dunst
 fi
 
-dunst -config "$DIR"/dunstrc &
+#Start Dunst
+dunst -config <(envsubst < ~/.config/dunst/dunstrc) &
