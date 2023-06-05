@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 zscroll -l 40 \
-        --delay 0.45 \
+        --delay 0.1 \
         --match-command "$HOME/.local/bin/zscroll-quote/get-new-quote" \
         --update-check true "$HOME/.local/bin/zscroll-quote/get-new-quote" &
 
