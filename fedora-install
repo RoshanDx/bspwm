@@ -155,7 +155,7 @@ mkdir ~/Pictures/screenshots ~/Pictures/wallpapers
 # Copy User's Config
 cd ~/repo/bspwm
 cp -r .config ~
-cp .profile .xinitrc .Xresources .Xmodmap .gtkrc-2.- ~/
+cp .profile .xinitrc .Xresources .Xmodmap .gtkrc-2.0 ~/
 sudo cp wallpaper/samurai.jpg /usr/share/backgrounds/
 echo "Config folder copied"
 
