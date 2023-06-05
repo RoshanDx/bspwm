@@ -1,9 +1,12 @@
+
+echo "If you want to win the lottery you have to make the money to buy a ticket" | cowsay -f tux | lolcat
+
 ##############################################################################
 # History Configuration
 ##############################################################################
-HISTSIZE=5000               #How many lines of history to keep in memory
+HISTSIZE=100               #How many lines of history to keep in memory
 HISTFILE=~/.zsh_history     #Where to save history to disk
-SAVEHIST=5000               #Number of history entries to save to disk
+SAVEHIST=100               #Number of history entries to save to disk
 #HISTDUP=erase               #Erase duplicates in the history file
 setopt    appendhistory     #Append history to the history file (no overwriting)
 setopt    sharehistory      #Share history across terminals
@@ -26,7 +29,7 @@ bindkey "^[[1;5D" backward-word
 
 #Alias
 alias fuck="sudo"
-alias ls="ls --color=auto"
+alias ls="ls -la --color=auto"
 alias wifimenu="sh ~/.config/rofi/scripts/wifi_menu"
 alias locate="sh ~/.config/rofi/scripts/locate_menu"
 alias aqua="asciiquarium"
