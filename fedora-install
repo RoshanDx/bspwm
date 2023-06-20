@@ -71,8 +71,14 @@ sudo snap install postman
 sudo snap install dbeaver-ce
 
 # Bibata Cursor
-sudo dnf copr -y enable peterwu/rendezvous
-sudo dnf install -y bibata-cursor-themes
+if [ ! -d "~/icons" ] 
+then
+    echo "Directory ~/icons DOES NOT exists. Creating a new one" 
+    sudo mkdir ~/.icons
+fi
+wget https://github.com/ful1e5/Bibata_Cursor/releases/download/v2.0.3/Bibata-Modern-Ice.tar.gz
+tar -xvf Bibata-Modern-Ice.tar.gz
+cp -r Bibata-Modern-Ice ~/.icons/
 
 # Pamixer
 sudo dnf install -y meson pulseaudio-libs-devel cxxopts
@@ -100,9 +106,13 @@ cd zscroll
 sudo python3 setup.py install
 cd ..
 
-#Betterlockscreen
-sudo dnf -y copr enable tokariew/i3lock-color
-sudo dnf -y install i3lock-color xset bc
+# Betterlockscreen
+## Install dependencies
+sudo dnf install -y autoconf automake cairo-devel fontconfig gcc libev-devel libjpeg-turbo-devel libXinerama libxkbcommon-devel libxkbcommon-x11-devel libXrandr pam-devel pkgconf xcb-util-image-devel xcb-util-xrm-devel
+git clone https://github.com/Raymo111/i3lock-color.git
+cd i3lock-color
+./install-i3lock-color.sh
+
 wget https://github.com/betterlockscreen/betterlockscreen/archive/refs/heads/main.zip
 unzip main.zip
 cd betterlockscreen-main/
@@ -210,7 +220,6 @@ sudo ufw limit 22/tcp
 sudo ufw allow 80/tcp
 sudo ufw allow 443/tcp
 sudo ufw allow 1443/tcp
-sudo ufw allow 8081/tcp
 sudo ufw allow 3306/tcp
 sudo ufw default deny incoming
 sudo ufw default allow outgoing
