@@ -48,7 +48,7 @@ sudo dnf install -y make autoconf automake gcc gcc-c++ kernel-devel #Manual Comp
 echo "Packages Installed"
 
 # Add Flathub Repo
-flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 echo -ne "
 -------------------------------------------------------------------------
@@ -63,6 +63,7 @@ then
     echo "Directory ~/.local/share/icons DOES NOT exists. Creating a new one" 
     sudo mkdir ~/.local/share/icons
 fi
+chown $USER:$USER ~/.local/share/icons
 wget https://github.com/ful1e5/Bibata_Cursor/releases/download/v2.0.3/Bibata-Modern-Ice.tar.gz
 tar -xvf Bibata-Modern-Ice.tar.gz
 cp -r Bibata-Modern-Ice ~/.local/share/icons
@@ -145,16 +146,8 @@ then
     echo "Directory /usr/share/fonts DOES NOT exists. Creating a new one" 
     mkdir ~/.local/share/fonts
 fi
+chown $USER:$USER ~/.local/share/fonts
 cp -r fonts/. ~/.local/share/fonts/
-echo "Fonts Copied"
-
-#Copy Icons
-if [ ! -d "~/.local/share/icons" ] 
-then
-    echo "Directory ~/.local/share/icons DOES NOT exists. Creating a new one" 
-    mkdir ~/.local/share/icons
-fi
-chown $USER:$USER icons
 echo "Fonts Copied"
 
 cd ~
