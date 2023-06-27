@@ -71,7 +71,7 @@ sudo chown $USER:$USER ~/.local/share/icons
 if [ ! -d "~/.local/share/fonts" ] 
 then
     echo "Directory ~/.local/share/fonts DOES NOT exists. Creating a new one" 
-    mkdir ~/.local/share/fonts
+    sudo mkdir ~/.local/share/fonts
 fi
 sudo chown $USER:$USER ~/.local/share/fonts
 
@@ -80,7 +80,7 @@ cd ~/repo
 # Bibata Cursor
 wget https://github.com/ful1e5/Bibata_Cursor/releases/download/v2.0.3/Bibata-Modern-Ice.tar.gz
 tar -xvf Bibata-Modern-Ice.tar.gz
-cp -r Bibata-Modern-Ice ~/.local/share/icons
+cp -r Bibata-Modern-Ice ~/.local/share/icons/
 
 # Pamixer
 sudo dnf install -y meson pulseaudio-libs-devel cxxopts
@@ -118,7 +118,7 @@ wget https://github.com/betterlockscreen/betterlockscreen/archive/refs/heads/mai
 unzip main.zip
 cd betterlockscreen-main/
 chmod u+x betterlockscreen
-sudo cp betterlockscreen ~/local/bin/
+sudo cp betterlockscreen ~/.local/bin/
 sudo cp system/betterlockscreen@.service /usr/lib/systemd/system/
 sudo systemctl enable betterlockscreen@$USER
 cd ..
