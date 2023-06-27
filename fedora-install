@@ -55,15 +55,30 @@ echo -ne "
                     3rd Packages
 -------------------------------------------------------------------------
 "
-cd ~/repo
 
-# Bibata Cursor
+# Create necessary dir
+
+cd ~
+mkdir Downloads Pictures Documents Videos dev
+mkdir ~/Pictures/screenshots ~/Pictures/wallpapers
+
 if [ ! -d "~/.local/share/icons" ] 
 then
     echo "Directory ~/.local/share/icons DOES NOT exists. Creating a new one" 
     sudo mkdir ~/.local/share/icons
 fi
-chown $USER:$USER ~/.local/share/icons
+sudo chown $USER:$USER ~/.local/share/icons
+
+if [ ! -d "~/.local/share/fonts" ] 
+then
+    echo "Directory /usr/share/fonts DOES NOT exists. Creating a new one" 
+    mkdir ~/.local/share/fonts
+fi
+sudo chown $USER:$USER ~/.local/share/fonts
+
+cd ~/repo
+
+# Bibata Cursor
 wget https://github.com/ful1e5/Bibata_Cursor/releases/download/v2.0.3/Bibata-Modern-Ice.tar.gz
 tar -xvf Bibata-Modern-Ice.tar.gz
 cp -r Bibata-Modern-Ice ~/.local/share/icons
@@ -141,18 +156,8 @@ echo -ne "
 "
 
 #Copy Fonts
-if [ ! -d "~/.local/share/fonts" ] 
-then
-    echo "Directory /usr/share/fonts DOES NOT exists. Creating a new one" 
-    mkdir ~/.local/share/fonts
-fi
-chown $USER:$USER ~/.local/share/fonts
 cp -r fonts/. ~/.local/share/fonts/
 echo "Fonts Copied"
-
-cd ~
-mkdir Downloads Pictures Documents Videos dev
-mkdir ~/Pictures/screenshots ~/Pictures/wallpapers
 
 # Copy User's Config
 cd ~/repo/bspwm
