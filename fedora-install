@@ -79,8 +79,7 @@ cd ~/repo
 
 # Bibata Cursor
 wget https://github.com/ful1e5/Bibata_Cursor/releases/download/v2.0.3/Bibata-Modern-Ice.tar.gz
-tar -xvf Bibata-Modern-Ice.tar.gz
-cp -r Bibata-Modern-Ice ~/.local/share/icons/
+tar -xvf Bibata-Modern-Ice.tar.gz -C ~/.local/share/icons
 
 # Pamixer
 sudo dnf install -y meson pulseaudio-libs-devel cxxopts
