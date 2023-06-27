@@ -155,6 +155,8 @@ echo -ne "
 -------------------------------------------------------------------------
 "
 
+cd ~/repo/bspwm/
+
 #Copy Fonts
 cp -r fonts/. ~/.local/share/fonts/
 echo "Fonts Copied"
