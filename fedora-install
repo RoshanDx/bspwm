@@ -64,20 +64,11 @@ mkdir ~/Pictures/screenshots ~/Pictures/wallpapers
 if [ ! -d "~/.local" ]
 then
     echo "Directory ~/.local DOES NOT exists. Creating a new one" 
-    mkdir ~/.local ~/.local/share
+    mkdir ~/.local
+    mkdir ~/.local/share ~/.local/bin
+    mkdir ~/.local/share/icons ~/.local/share/fonts
 fi
 
-if [ ! -d "~/.local/share/icons" ]
-then
-    echo "Directory ~/.local/share/icons DOES NOT exists. Creating a new one" 
-    mkdir ~/.local/share/icons
-fi
-
-if [ ! -d "~/.local/share/fonts" ]
-then
-    echo "Directory ~/.local/share/fonts DOES NOT exists. Creating a new one" 
-    mkdir ~/.local/share/fonts
-fi
 
 cd ~/repo
 
