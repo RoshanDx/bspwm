@@ -29,7 +29,8 @@ bindkey "^[[1;5D" backward-word
 
 #Alias
 alias fuck="sudo"
-alias ls="ls -la --color=auto"
+alias ls="ls --color=auto"
+alias ll="ls -la --color=auto"
 alias wifimenu="sh ~/.config/rofi/scripts/wifi_menu"
 alias locate="sh ~/.config/rofi/scripts/locate_menu"
 alias aqua="asciiquarium"
@@ -39,3 +40,16 @@ source ~/.config/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.config/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.config/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 source ~/.config/zsh/plugins/zsh-you-should-use/you-should-use.plugin.zsh
+
+
+#Toolbox Prompt
+if [[ -n $NAME ]]; then export ACCENT=◇ ; fi
+PROMPT=$ACCENT$PROMPT
+
+if [ -f /run/.toolboxenv ]; then
+    source /run/.containerenv
+    if [[ $name = "test" ]]; then
+	      # export JAVA_HOME=/usr/lib/jvm/java-17-openjdk    
+        # export PATH=$PATH:$JAVA_HOME
+    fi
+fi

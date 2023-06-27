@@ -23,7 +23,7 @@ get_options() {
   echo "  Hibernate"
   echo "  Lock"
   echo "  Suspend"
-  echo "  Log out"
+  echo "  Logout"
 }
 
 main() {
@@ -42,7 +42,6 @@ main() {
         else
 	    exit
         fi
-    # systemctl poweroff
     ;;
   '  Reboot')
  	ans=$(get_confirmation)
@@ -59,14 +58,6 @@ main() {
 	systemctl hibernate; betterlockscreen --lock; 
     ;;
   '  Lock')
-#        ans=$(get_confirmation)
-#        if [[ $ans == "yes" ]] || [[ $ans == "YES" ]] || [[ $ans == "y" ]]; then
-#            betterlockscreen --lock
-#        elif [[ $ans == "no" ]] || [[ $ans == "NO" ]] || [[ $ans == "n" ]]; then
-#            exit
-#        else
-#            exit
-#	fi
     betterlockscreen --lock
     ;;
   '  Suspend')
@@ -81,7 +72,7 @@ main() {
 	    exit
         fi
     ;;
-  '  Log out')
+  '  Logout')
 	ans=$(get_confirmation)
 	if [[ $ans == "yes" ]] || [[ $ans == "YES" ]] || [[ $ans == "y" ]]; then
 	    bspc quit
