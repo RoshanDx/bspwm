@@ -103,7 +103,7 @@ wget https://github.com/betterlockscreen/betterlockscreen/archive/refs/heads/mai
 unzip main.zip
 cd betterlockscreen-main/
 chmod u+x betterlockscreen
-sudo cp betterlockscreen /usr/local/bin/
+sudo cp betterlockscreen ~/local/bin/
 sudo cp system/betterlockscreen@.service /usr/lib/systemd/system/
 sudo systemctl enable betterlockscreen@$USER
 cd ..
