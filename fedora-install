@@ -159,22 +159,21 @@ cd ~/repo/bspwm
 cp -r .config ~
 cp .profile .xinitrc .Xresources .Xmodmap .gtkrc-2.0 ~/
 sudo cp wallpaper/samurai.jpg /usr/share/backgrounds/
-echo "Config folder copied"
-
-#Copy Fonts
-cp -r fonts/. ~/.local/share/fonts/
-echo "Fonts Copied"
+echo "Config Copied"
 
 #Copy User's Script
-cp -r .local ~/
+cp -r .local ~
+echo "User Scripts Copied"
+
+#Copy Fonts
+cp -r fonts ~/.local/share/fonts
+echo "Fonts Copied"
 
 if [[ $SYSTEM = "desktop" ]]; then
     cd ~/.local/bin
     rm -rf changebrightness chargingnotify batterynotify
     cd ~/repo/bspwm
 fi
-
-echo "User's Script Copied"
 
 #Set Btop Theme
 btoptheme='color_theme = "/home/'$USER'/.config/btop/themes/tokyo-night.theme"'
