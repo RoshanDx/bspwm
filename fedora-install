@@ -75,8 +75,6 @@ then
 fi
 sudo chown $USER:$USER ~/.local/share/fonts
 
-ll ~/.local/share
-
 cd ~/repo
 
 # Bibata Cursor
