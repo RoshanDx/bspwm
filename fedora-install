@@ -38,7 +38,7 @@ echo "RPM Fusion Repository enabled"
 
 pkgs='@base-x neofetch feh polybar rofi neovim vim bspwm sxhkd picom alacritty thunar zsh ranger nitrogen pavucontrol
 xsensors unzip dunst cronie xclip xdg-utils xdotool firefox btop htop maim viewnior asciiquarium geany 
-gvfs thunar-volman network-manager-applet iwd xdg-user-dirs bluez bluez-tools kitty toolbox flatpak 
+gvfs thunar-volman network-manager-applet iwd xdg-user-dirs bluez bluez-tools kitty toolbox flatpak timeshift 
 acpi ufw thunar-archive-plugin xsetroot xautolock lxpolkit lxappearance xmodmap util-linux-user wget cowsay lolcat'
 
 # Install Dependecies
