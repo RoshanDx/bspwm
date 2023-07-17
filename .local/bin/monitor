@@ -55,7 +55,7 @@ if [[ $(xrandr -q | grep "${EXTERNAL_MONITOR} connected") ]]; then
 	#bspc monitor "${EXTERNAL_MONITOR}" -d '一' '二' '三' '四' '五' '六' '七'
 	
 	## set xrandr rules for multiple monitor or docked setup
-	xrandr --output "$INTERNAL_MONITOR" --mode 1920x1080 --pos 0x0 --rotate normal --output "$EXTERNAL_MONITOR" --primary --mode 3840x2160 -r 120.00 --pos 1920x0 --rotate normal
+	xrandr --output "$INTERNAL_MONITOR" --mode 1920x1080 --pos 0x0 --rotate normal --right-of "$EXTERNAL_MONITOR" --output "$EXTERNAL_MONITOR" --primary --mode 3840x2160 -r 120.00 --pos 1920x0 --rotate normal
 	bspc monitor "$INTERNAL_MONITOR" -d '一' '二' '三' '四' '五' '六' '七'
 	
 	if [[ $(bspc query -D -m "${EXTERNAL_MONITOR}" | wc -l) -ne 7 ]]; then

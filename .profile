@@ -5,11 +5,11 @@ export BROWSER="firefox"
 # custom scripts
 export CUSTOM=$PATH:~/.local/bin
 
-export GRADLE_HOME=/opt/gradle/gradle-8.1
-export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
-#export JAVA_HOME=/opt/graalvm-ce-java17-22.3.2
+export GRADLE_HOME=/opt/sdks/gradle-8.2
+export JAVA_HOME=/opt/sdks/jdk-17.0.7
+export MAVEN_HOME=/opt/sdks/apache-maven-3.9.3
 export CARGO=~/.cargo/bin
 export FLATPAK=/var/lib/flatpak/export/bin
 export SNAP=/snap/bin
 
-export PATH=$PATH:$CUSTOM:$JAVA_HOME/bin:$GRADLE_HOME/bin:$CARGO:$FLATPAK:$SNAP
+export PATH=$PATH:$CUSTOM:$JAVA_HOME/bin:$GRADLE_HOME/bin:$CARGO:$FLATPAK:$MAVEN_HOME/bin

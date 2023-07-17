@@ -147,8 +147,8 @@ XF86MonBrightnessDown
 	
 # Pavucontrol
 super + shift + p
-	tdrop -ma -w 40% -y 30% -x 30% -n Pavucontrol --class=Pavucontrol pavucontrol
-	
+	sh ~/.local/bin/audio-device-switcher
+
 # Thunar
 super + e
 	tdrop -ma -w 40% -y 30% -x 30% -n thunar --class=thunar thunar

@@ -36,8 +36,8 @@ sudo dnf install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-r
 sudo dnf install -y https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 echo "RPM Fusion Repository enabled"
 
-pkgs='@base-x neofetch feh polybar rofi neovim vim bspwm sxhkd picom alacritty thunar zsh ranger nitrogen pavucontrol
-xsensors unzip dunst cronie xclip xdg-utils xdotool firefox btop htop maim viewnior asciiquarium geany 
+pkgs='@base-x neofetch feh polybar rofi neovim vim bspwm sxhkd picom alacritty thunar zsh ranger nitrogen 
+xsensors unzip dunst cronie xclip xdg-utils xdotool btop htop maim viewnior asciiquarium xarchiver 
 gvfs thunar-volman network-manager-applet iwd xdg-user-dirs bluez bluez-tools kitty toolbox flatpak timeshift 
 acpi ufw thunar-archive-plugin xsetroot xautolock lxpolkit lxappearance xmodmap util-linux-user wget cowsay lolcat'
 
@@ -53,7 +53,7 @@ sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub
 echo -ne "
 -------------------------------------------------------------------------
                     3rd Packages
--------------------------------------------------------------------------
+--------------------------------------------------------------xa-----------
 "
 
 # Create necessary dir
@@ -136,6 +136,16 @@ if [[ $SYSTEM = "laptop" ]]; then
 
 fi
 
+# Install Flatpak Apps
+flatpak install flathub com.visualstudio.code
+flatpak install flathub com.getpostman.Postman
+flatpak install flathub com.github.tchx84.Flatseal
+flatpak install flathub com.google.Chrome
+flatpak install https://downloads.1password.com/linux/flatpak/1Password.flatpakref
+flatpak install flathub io.dbeaver.DBeaverCommunity
+flatpak install flathub org.mozilla.firefox
+flatpak install flathub org.pulseaudio.pavucontrol
+flatpak install flathub org.geany.Geany
 
 echo -ne "
 -------------------------------------------------------------------------
@@ -203,6 +213,7 @@ sudo ufw allow 3306/tcp
 sudo ufw default deny incoming
 sudo ufw default allow outgoing
 sudo ufw enable
+sudo systemctl enable ufw
 
 echo -ne "
 -------------------------------------------------------------------------
